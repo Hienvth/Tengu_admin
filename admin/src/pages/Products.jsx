@@ -1,6 +1,9 @@
 import React from 'react';
 import Table from '../components/products/tablePR'; 
-
+import EditIcon from '@material-ui/icons/Edit';
+import { IconButton } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import  '../components/products/button.css';
 
 const topCustomers = {
     head: [
@@ -16,7 +19,8 @@ const topCustomers = {
         'description',
         'createAt',
         'updateAt',
-        'action'
+        'edit',
+        'delete'
     ],
     body: [
         {
@@ -25,7 +29,7 @@ const topCustomers = {
             "subcategoryName": "Tranh Phong Cảnh",
             "productName": "Bộ 3 Tranh Lá Cây Phong - VY861",
             "price": 1720000,
-            "discount": 5,
+            "discount": 4,
             "actualPrice": 1634000,
             "quantity": 10,
             "photo": "http://res.cloudinary.com/apk-slution/image/upload/v1633240569/ekw2yiub8i1xffvhfsil.jpg",
@@ -69,21 +73,22 @@ const renderCusomerHead = (item, index) => (
 )
 
 const renderCusomerBody = (item, index ) => (
-    <tr key={index, Image}>
+    <tr key={index}>
         <td>{item._id}</td>
         <td>{item.categoryName}</td>
         <td>{item.subcategoryName}</td>
         <td>{item.productName}</td>
         <td>{item.price}</td>
-        <td>{item.discount}</td>
+        <td>{item.discount}%</td>
         <td>{item.actualPrice}</td>
         <td>{item.quantity}</td>
-        <td><img src={'item.photo'} style={{width: 80, height: 80}} /></td>
+        <td><img src={item.photo} style={{width: 80, height: 80}} /></td>
         
         <td>{item.description}</td>
         <td>{item.createAt}</td>
         <td>{item.updateAt}</td>
-        <td><button></button></td>
+        <td><IconButton><EditIcon/></IconButton></td>
+        <td><IconButton><DeleteIcon/></IconButton></td>
         
     </tr>
 )
@@ -95,19 +100,36 @@ const Products = () => {
         <div>
             <h2 className="page-header">
                 Products
-            </h2>         
+            </h2>     
+            
+            <div className="card__body">
+                    <div className="row2" >
+                       
+                            <button className="btn"><h4>Delete Product</h4></button>
+                            <button className="btn"><h4>Add Product</h4></button>
+                       
+                    </div>
+            </div>
+                 
             <div className="col-12">
                 <div className="card">
                 <div className="card__body">
                             <Table
+                                limit='1'
                                 headData={topCustomers.head}
                                 renderHead={(item, index) => renderCusomerHead(item, index)}
                                 bodyData={topCustomers.body}
                                 renderBody={(item, index) => renderCusomerBody(item, index)}
+
+
+                                
                             />
                         </div>
                 </div>
+
             </div>
+            
+
         </div>            
         
     )

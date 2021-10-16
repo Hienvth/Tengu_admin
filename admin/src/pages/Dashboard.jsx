@@ -115,6 +115,7 @@ const latestOrders = {
             price: "$400",
             status: "paid"
         },
+        
         {
             id: "#OD1713",
             user: "anthony baker",
@@ -134,7 +135,7 @@ const latestOrders = {
             user: "anthony baker",
             date: "27 Jun 2021",
             price: "$200",
-            status: "refund"
+            status: "pending"
         }
     ]
 }

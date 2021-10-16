@@ -25,15 +25,11 @@
         "icon": "bx bx-bar-chart-alt"
     },
     {
-        "display_name": "categories",
+        "display_name": "add",
         "route": "/categories",
         "icon": "bx bx-list-ol"
     },
-    {
-        "display_name": "discount",
-        "route": "/discount",
-        "icon": "bx bx-gift"
-    },
+    
     {
         "display_name": "inventory",
         "route": "/inventory",
