@@ -1,39 +1,41 @@
 import React, { useState } from 'react';
 import MaterialTable from 'material-table'
-import GetAppIcon from '@material-ui/icons/GetApp';
+import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 
 
-
 const Products = () => {
+
+ 
+
+
+
     const [tableData, setTableData] = useState([
-        { name: "Raj", email: "Raj@gmail.com", phone: 7894561230, age: null, gender: "M", city: "Chennai", fee: 78456 },
-        { name: "Mohan", email: "mohan@gmail.com", phone: 7845621590, age: 35, gender: "M", city: "Delhi", fee: 456125 },
-        { name: "Sweety", email: "sweety@gmail.com", phone: 741852912, age: 17, gender: "F", city: "Noida", fee: 458796 },
-        { name: "Vikas", email: "vikas@gmail.com", phone: 9876543210, age: 20, gender: "M", city: "Mumbai", fee: 874569 },
-        { name: "Neha", email: "neha@gmail.com", phone: 7845621301, age: 25, gender: "F", city: "Patna", fee: 748521 },
-        { name: "Mohan", email: "mohan@gmail.com", phone: 7845621590, age: 35, gender: "M", city: "Delhi", fee: 456125 },
-        { name: "Sweety", email: "sweety@gmail.com", phone: 741852912, age: 17, gender: "F", city: "Noida", fee: 458796 },
-        { name: "Vikas", email: "vikas@gmail.com", phone: 9876543210, age: 20, gender: "M", city: "Mumbai", fee: 874569 },
-        { name: "Raj", email: "Raj@gmail.com", phone: 7894561230, age: null, gender: "M", city: "Chennai", fee: 78456 },
-        { name: "Mohan", email: "mohan@gmail.com", phone: 7845621590, age: 35, gender: "M", city: "Delhi", fee: 456125 },
-        { name: "Sweety", email: "sweety@gmail.com", phone: 741852912, age: 17, gender: "F", city: "Noida", fee: 458796 },
-        { name: "Vikas", email: "vikas@gmail.com", phone: 9876543210, age: 20, gender: "M", city: "Mumbai", fee: 874569 },
+        { id: "001",name: "Picture1", price:"80000", discount:"4", actualPrice:"82000", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good good good good good good good good good good good good good good good good good good good good", createAt:"20/1/2021" },
+        { id: "001",name: "Picture1", price:"80000", discount:"5", actualPrice:"82000", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good", createAt:"20/1/2021" },
+        { id: "002",name: "Picture2", price:"80000", discount:"2", actualPrice:"82000", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good", createAt:"20/1/2021" },
+        { id: "003",name: "Picture3", price:"80000", discount:"3", actualPrice:"82000", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good", createAt:"20/1/2021" },
+        { id: "004",name: "Picture4", price:"80000", discount:"4", actualPrice:"82000", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good", createAt:"20/1/2021" },
+        { id: "005",name: "Picture5", price:"80000", discount:"5", actualPrice:"82000", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good", createAt:"20/1/2021" },
+        { id: "006",name: "Picture6", price:"80000", discount:"2", actualPrice:"82000", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good ", createAt:"02/01/2021" },
+
+        
       ])
       const columns = [
-        { title: "Name", field: "name", sorting: false, filtering: false, cellStyle: { background:"#009688" }, headerStyle: { color: "#fff" } },
-        { title: "Email", field: "email", filterPlaceholder: "filter" },
-        { title: "Phone Number", field: "phone", align: "center", grouping: false },
-        {
-          title: "Age", field: "age", emptyValue: () => <em>null</em>,
-          render: (rowData) => <div style={{ background: rowData.age >= 18 ? "#008000aa" : "#f90000aa",borderRadius:"4px",paddingLeft:5 }}>{rowData.age >= 18 ? "18+" : "18-"}</div>,
-           searchable: false, export: false
-        },
-        { title: "Gender", field: "gender", lookup: { M: "Male", F: "Female" } },
-        { title: "City", field: "city",filterPlaceholder:"filter" },
-        { title: "School Fee", field: "fee", type: "currency", currencySetting: { currencyCode: "INR", minimumFractionDigits: 1 },
-        cellStyle: { background:"#009688" }, headerStyle: { color: "#fff" } },
-      ]
+            
+            {title: "ID", field: "id",filtering: false,},
+            {title: "Name", field:"name"},
+            {title: "Price", field:"price",align: "left", type:"currency",currencySetting:{currencyCode:"VND", minimumFractionDigits: 0, locate:"vn" } },
+            {title:"Discount", field:"discount",align: "left", type:"numeric",lookup:{1:"1%", 2:"2%", 3:"3%", 4:"4%"} },
+            {title:"ActualPrice", field:"actualPrice",align: "left", type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false},
+            {title:"Quanlity", field:"quanlity", type:"numeric", align:"center"},
+
+            {title:"Photo",field:"photo", grouping: false, render: item => <img src={item.photo} alt="" border="3" height="80" width="60px"   />,filtering: false  },
+
+            {title:"Description", field: "description", weight:"100"},
+            {title: "CreateAt", field:"createAt", type:"date",filtering: false},
+            
+    ]
     
     return (
         <MaterialTable columns={columns} data={tableData}
@@ -57,30 +59,48 @@ const Products = () => {
 
           })
         }}
-        actions={[
-          {
-            icon: () => <GetAppIcon />,
-            tooltip: "Click me",
-            onClick: (e, data) => console.log(data),
+        // actions={[
+        //   {
+        //     icon: () => <DeleteIcon />,
+        //     tooltip: "Delete",
+        //     onClick: (e, data) => new Promise((resolve, reject) => {
+                 
+        //     })
+        //   } ,
+
             // isFreeAction:true
-          }
-        ]}
+          
+//        ]}
         onSelectionChange={(selectedRows) => console.log(selectedRows)}
         options={{
-          sorting: true, search: true,
-          searchFieldAlignment: "right", searchAutoFocus: true, searchFieldVariant: "standard",
-          filtering: true, paging: true, pageSizeOptions: [2, 5, 10, 20, 25, 50, 100], pageSize: 5,
-          paginationType: "stepped", showFirstLastPageButtons: false, paginationPosition: "both", exportButton: true,
-          exportAllData: true, exportFileName: "TableData", addRowPosition: "first", actionsColumnIndex: -1, selection: true,
-          showSelectAllCheckbox: false, showTextRowsSelected: false, selectionProps: rowData => ({
-            disabled: rowData.age == null,
+          sorting: true, 
+          search: true,
+          searchFieldAlignment: "right", 
+          searchAutoFocus: true, 
+          searchFieldVariant: "standard",
+          filtering: true, 
+          paging: true, 
+          
+          pageSizeOptions: [2, 5, 10, 20, 25, 50, 100], 
+          pageSize: 5,
+          paginationType: "stepped", 
+          showFirstLastPageButtons: false, 
+          paginationPosition: "both", exportButton: true,
+          //exportAllData: true,
+          exportFileName: "TableData", 
+          addRowPosition: "first", actionsColumnIndex: -1, 
+          
+          selection: false,
+          showSelectAllCheckbox: false, 
+          showTextRowsSelected: false, 
+          selectionProps: rowData => ({disabled: rowData.photo == null,
             // color:"primary"
           }),
           grouping: true, columnsButton: true,
           rowStyle: (data, index) => index % 2 === 0 ? { background: "#f5f5f5" } : null,
           headerStyle: { background: "#f44336",color:"#fff"}
         }}
-        title="Student Information"
+        title="Product Information"
         icons={{ Add: () => <AddIcon /> }} />            
         
     )

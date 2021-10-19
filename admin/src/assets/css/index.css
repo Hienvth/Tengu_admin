@@ -74,15 +74,6 @@ ul {
     list-style-type: none;
 }
 
-input {
-    border: 2px solid transparent;
-    outline: 0;
-}
-
-input:focus {
-    border: 2px solid var(--main-color);
-}
-
 .page-header {
     margin-bottom: 40px;
     text-transform: capitalize;
