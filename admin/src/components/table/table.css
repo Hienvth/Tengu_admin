@@ -18,10 +18,9 @@ tr {
 
 th,
 td {
-    text-transform: capitalize;
+    /*text-transform: capitalize; */
     padding: 15px 10px;
 }
-
 
 .table__pagination {
     display: flex;
