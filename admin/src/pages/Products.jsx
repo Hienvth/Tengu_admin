@@ -6,9 +6,6 @@ import AddIcon from '@material-ui/icons/Add';
 
 const Products = () => {
 
- 
-
-
 
     const [tableData, setTableData] = useState([
         { id: "001",name: "Picture1", price:"80000", discount:"4", actualPrice:"82000", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good good good good good good good good good good good good good good good good good good good good", createAt:"20/1/2021" },

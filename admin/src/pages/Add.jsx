@@ -8,21 +8,21 @@ const Customers = () => {
 
 
     const [tableData, setTableData] = useState([
-        {name: "khach1", email:"abcd@gmail.com", phone:"0921213124", totalOrder:"211", totalSpend:"1000000", location:"long an"},
-        {name: "khach2", email:"abcd@gmail.com", phone:"0921213123", totalOrder:"1111", totalSpend:"1000000", location:"long an"},
-        {name: "khach3", email:"abcd@gmail.com", phone:"0921213122", totalOrder:"111", totalSpend:"1000000", location:"long an"},
-        {name: "khach4", email:"abcd@gmail.com", phone:"0921213119", totalOrder:"11", totalSpend:"1000000", location:"Long an"}
-        
+        {orderId:"#0001", customerName:"khach1",totalPrice:1000000, date:"20/08/2021", status:"delivered" },
+        {orderId:"#0002", customerName:"khach2",totalPrice:1000000, date:"20/02/2021", status:"delivered" },
+        {orderId:"#0004", customerName:"khach3",totalPrice:1000000, date:"20/09/2021", status:"shipping" },
+        {orderId:"#0003", customerName:"khach2",totalPrice:1000000, date:"22/08/2021", status:"shipping" },
+        {orderId:"#0006", customerName:"khach6",totalPrice:1000000, date:"21/08/2021", status:"" },
+
       ])
       const columns = [
-        { title:""},
-         {title:"Name", field:"name"},
-         {title:"Email", field:"email", sorting:false},
-         {title:"Phone numbers", field:"phone", sorting:false},
-         {title:"Total Orders", field:"totalOrder", type:"numeric", align:"left"},
-         {title:"Total Spend", field:"totalSpend",align: "left", type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false},
-         {title:"Location", field:"location"}   
-            
+        {title:"Order ID", field:"orderId"},
+        {title:"Customer Name", field:"customerName",sorting: false},
+        {title:"Total Price", field:"totalPrice",align: "left", type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false, 
+       },
+        {title:"Date", field:"date", type:"date",filtering: false,sorting: false},
+        {title:"Status", field:"status", render: (rowData) => <div style={{ background: rowData.status == "delivered" ? "#008000aa" : "#f90000aa",width:"100px", height:"30px", fontWeight:"bold", color:"#fff",textAlign:"center",borderRadius:"4px",padding: 5  }}>{rowData.status == "delivered" ? "Delivered" : "Shipping"}</div>,
+        searchable: false, export: false}
     ]
     
     return (
@@ -81,14 +81,15 @@ const Customers = () => {
           selection: false,
           showSelectAllCheckbox: false, 
           showTextRowsSelected: false, 
-          selectionProps: rowData => ({disabled: rowData.name == null,
+          selectionProps: rowData => ({disabled: rowData.status == null,
             // color:"primary"
           }),
           grouping: true, columnsButton: true,
           rowStyle: (data, index) => index % 2 === 0 ? { background: "#f5f5f5" } : null,
           headerStyle: { background: "#f44336",color:"#fff"}
         }}
-        title="Customers Information"
+        
+        title="Orders"
         icons={{ Add: () => <AddIcon /> }} />            
         
     )
