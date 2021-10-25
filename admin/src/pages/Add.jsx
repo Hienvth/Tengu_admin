@@ -1,33 +1,28 @@
 import React, { useState } from 'react';
 import MaterialTable from 'material-table'
-import GetAppIcon from '@material-ui/icons/GetApp';
+import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 
 
+const Customers = () => {
 
-const Products = () => {
+
     const [tableData, setTableData] = useState([
-        { id: "001",name: "Picture1", price:"80000", discount:"4", actualPrice:"82000", quanlity:"2",photo:"http://res.cloudinary.com/apk-slution/image/upload/v1633240569/ekw2yiub8i1xffvhfsil.jpg",description:" good", createAt:"20/1/2021" },
-        { id: "001",name: "Picture1", price:"80000", discount:"5", actualPrice:"82000", quanlity:"2",photo:"http://res.cloudinary.com/apk-slution/image/upload/v1633240569/ekw2yiub8i1xffvhfsil.jpg",description:" good", createAt:"20/1/2021" },
-        { id: "002",name: "Picture2", price:"80000", discount:"2", actualPrice:"82000", quanlity:"2",photo:"http://res.cloudinary.com/apk-slution/image/upload/v1633240569/ekw2yiub8i1xffvhfsil.jpg",description:" good", createAt:"20/1/2021" },
-        { id: "003",name: "Picture3", price:"80000", discount:"3", actualPrice:"82000", quanlity:"2",photo:"http://res.cloudinary.com/apk-slution/image/upload/v1633240569/ekw2yiub8i1xffvhfsil.jpg",description:" good", createAt:"20/1/2021" },
-        { id: "004",name: "Picture4", price:"80000", discount:"4", actualPrice:"82000", quanlity:"2",photo:"http://res.cloudinary.com/apk-slution/image/upload/v1633240569/ekw2yiub8i1xffvhfsil.jpg",description:" good", createAt:"20/1/2021" },
-        { id: "005",name: "Picture5", price:"80000", discount:"5", actualPrice:"82000", quanlity:"2",photo:"http://res.cloudinary.com/apk-slution/image/upload/v1633240569/ekw2yiub8i1xffvhfsil.jpg",description:" good", createAt:"20/1/2021" },
-        { id: "006",name: "Picture6", price:"80000", discount:"2", actualPrice:"82000", quanlity:"2",photo:"http://res.cloudinary.com/apk-slution/image/upload/v1633240569/ekw2yiub8i1xffvhfsil.jpg",description:" good", createAt:"02/01/2021" },
+        {orderId:"#0001", customerName:"khach1",totalPrice:1000000, date:"20/08/2021", status:"delivered" },
+        {orderId:"#0002", customerName:"khach2",totalPrice:1000000, date:"20/02/2021", status:"delivered" },
+        {orderId:"#0004", customerName:"khach3",totalPrice:1000000, date:"20/09/2021", status:"shipping" },
+        {orderId:"#0003", customerName:"khach2",totalPrice:1000000, date:"22/08/2021", status:"shipping" },
+        {orderId:"#0006", customerName:"khach6",totalPrice:1000000, date:"21/08/2021", status:"" },
 
-        
       ])
       const columns = [
-            
-            {title: "ID", field: "id"},
-            {title: "Name", field:"name"},
-            {title: "Price", field:"price"},
-            {title:"Discount", field:"discount"},
-            {title:"ActualPrice", field:"actualPrice"},
-            {title:"Quanlity", field:"quanlity"},
-            {title:"Photo", field:"photo"},
-            {title:"Description", field: "description"},
-            {title: "CreateAt", field:"createAt"},
+        {title:"Order ID", field:"orderId"},
+        {title:"Customer Name", field:"customerName",sorting: false},
+        {title:"Total Price", field:"totalPrice",align: "left", type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false, 
+       },
+        {title:"Date", field:"date", type:"date",filtering: false,sorting: false},
+        {title:"Status", field:"status", render: (rowData) => <div style={{ background: rowData.status == "delivered" ? "#008000aa" : "#f90000aa",width:"100px", height:"30px", fontWeight:"bold", color:"#fff",textAlign:"center",borderRadius:"4px",padding: 5  }}>{rowData.status == "delivered" ? "Delivered" : "Shipping"}</div>,
+        searchable: false, export: false}
     ]
     
     return (
@@ -52,33 +47,52 @@ const Products = () => {
 
           })
         }}
-        actions={[
-          {
-            icon: () => <GetAppIcon />,
-            tooltip: "Click me",
-            onClick: (e, data) => console.log(data),
+        // actions={[
+        //   {
+        //     icon: () => <DeleteIcon />,
+        //     tooltip: "Delete",
+        //     onClick: (e, data) => new Promise((resolve, reject) => {
+                 
+        //     })
+        //   } ,
+
             // isFreeAction:true
-          }
-        ]}
+          
+//        ]}
         onSelectionChange={(selectedRows) => console.log(selectedRows)}
         options={{
-          sorting: true, search: true,
-          searchFieldAlignment: "right", searchAutoFocus: true, searchFieldVariant: "standard",
-          filtering: true, paging: true, pageSizeOptions: [2, 5, 10, 20, 25, 50, 100], pageSize: 5,
-          paginationType: "stepped", showFirstLastPageButtons: false, paginationPosition: "both", exportButton: true,
-          exportAllData: true, exportFileName: "TableData", addRowPosition: "first", actionsColumnIndex: -1, selection: true,
-          showSelectAllCheckbox: false, showTextRowsSelected: false, selectionProps: rowData => ({
-            disabled: rowData.age == null,
+          sorting: true, 
+          search: true,
+          searchFieldAlignment: "right", 
+          searchAutoFocus: true, 
+          searchFieldVariant: "standard",
+          filtering: true, 
+          paging: true, 
+          
+          pageSizeOptions: [2, 5, 10, 20, 25, 50, 100], 
+          pageSize: 10,
+          paginationType: "stepped", 
+          showFirstLastPageButtons: false, 
+          paginationPosition: "both", exportButton: true,
+          //exportAllData: true,
+          exportFileName: "TableData", 
+          addRowPosition: "first", actionsColumnIndex: -1, 
+          
+          selection: false,
+          showSelectAllCheckbox: false, 
+          showTextRowsSelected: false, 
+          selectionProps: rowData => ({disabled: rowData.status == null,
             // color:"primary"
           }),
           grouping: true, columnsButton: true,
           rowStyle: (data, index) => index % 2 === 0 ? { background: "#f5f5f5" } : null,
           headerStyle: { background: "#f44336",color:"#fff"}
         }}
-        title="Products"
+        
+        title="Orders"
         icons={{ Add: () => <AddIcon /> }} />            
         
     )
 }
 
-export default Products
+export default Customers

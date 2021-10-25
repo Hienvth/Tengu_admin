@@ -8,7 +8,7 @@ import Products from '../pages/Products'
 import Analytics from '../pages/Analytics'
 import Orders from '../pages/Orders'
 import Add from '../pages/Add'
-import Inventory from '../pages/Inventory'
+import Profile from '../pages/Profile'
 import Settings from '../pages/Settings'
 const Routes = () => {
     return (
@@ -19,7 +19,7 @@ const Routes = () => {
             <Route path='/orders' component={Orders}/>
             <Route path='/analytics' component={Analytics}/>
             <Route path='/add' component={Add}/>
-            <Route path='/inventory' component={Inventory}/>
+            <Route path='/profile' component={Profile}/>
         
             <Route path='/settings' component={Settings}/>
         

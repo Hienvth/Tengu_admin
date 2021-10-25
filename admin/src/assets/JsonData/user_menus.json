@@ -1,15 +1,18 @@
 [
     {
         "icon": "bx bx-user",
-        "content": "Profile"
+        "content": "Profile",
+        "link":"profile"
     },
     
     {
         "icon": "bx bx-cog",
-        "content": "Settings"
+        "content": "Settings",
+        "link":"https://www.google.com.vn/?hl=vi"
     },
     {
         "icon": "bx bx-log-out-circle bx-rotate-180",
-        "content": "Logout"
+        "content": "Logout",
+        "link":"https://www.google.com.vn/?hl=vi"
     }
 ]

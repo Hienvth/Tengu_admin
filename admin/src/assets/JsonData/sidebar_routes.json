@@ -31,9 +31,9 @@
     },
     
     {
-        "display_name": "Inventory",
-        "route": "/inventory",
-        "icon": "bx bx-store-alt"
+        "display_name": "Profile",
+        "route": "/profile",
+        "icon": "bx bx-user"
     },
     {
         "display_name": "Settings",

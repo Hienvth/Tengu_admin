@@ -44,8 +44,9 @@ const useStyles = makeStyles((theme) => ({
         color: 'white',
         backgroundColor: 'grey',
         borderRadius: 8,
-        padding: '3px 10px',
-        display: 'inline-block'
+        margin: "auto",
+        display: 'inline-block',
+        mineight:"auto",
     }
   }));
 
