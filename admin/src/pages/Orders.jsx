@@ -21,7 +21,7 @@ const Customers = () => {
         {title:"Total Price", field:"totalPrice",align: "left", type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false, 
        },
         {title:"Date", field:"date", type:"date",filtering: false,sorting: false},
-        {title:"Status", field:"status", render: (rowData) => <div style={{ background: rowData.status == "delivered" ? "#008000aa" : "#f90000aa",width:"100px", height:"30px", fontWeight:"bold", color:"#fff",textAlign:"center",borderRadius:"4px",padding: 5  }}>{rowData.status == "delivered" ? "Delivered" : "Shipping"}</div>,
+        {title:"Status", field:"status", render: (rowData) => <div style={{ background: rowData.status = "delivered" ? "#008000aa" : "#f90000aa",width:"100px", height:"30px", fontWeight:"bold", color:"#fff",textAlign:"center",borderRadius:"4px",padding: 5  }}>{rowData.status == "delivered" ? "Delivered" : "Shipping"}</div>,
         searchable: false, export: false}
     ]
     
