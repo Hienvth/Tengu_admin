@@ -1,0 +1,14 @@
+
+.paperStyle{
+    width: 300px;
+    padding: 20px;
+    height: 400px;
+    margin: 20px auto;
+}
+.btnSC{
+    position: relative;
+    display: flex;
+    justify-content:right;
+    margin: 0 15px;
+    
+}

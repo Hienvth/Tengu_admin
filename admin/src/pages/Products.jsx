@@ -35,7 +35,11 @@ const Products = () => {
     ]
     
     return (
-        <MaterialTable columns={columns} data={tableData}
+     
+      <div className="col-12">
+          <div className="card">
+              <div className="card__body">
+              <MaterialTable columns={columns} data={tableData}
         editable={{
           onRowAdd: (newRow) => new Promise((resolve, reject) => {
             setTableData([...tableData, newRow])
@@ -100,6 +104,12 @@ const Products = () => {
         title="Product Information"
         icons={{ Add: () => <AddIcon /> }} />            
         
+              </div>
+          </div>
+
+      </div>
+  
+      
     )
 }
 

@@ -20,15 +20,16 @@
         "icon": "bx bx-cart"
     },
     {
+        "display_name": "Top Customers",
+        "route": "/add",
+        "icon": "bx bx-list-ol"
+    },
+    {
         "display_name": "Analytics",
         "route": "/analytics",
         "icon": "bx bx-bar-chart-alt"
     },
-    {
-        "display_name": "Add",
-        "route": "/add",
-        "icon": "bx bx-list-ol"
-    },
+    
     
     {
         "display_name": "Profile",

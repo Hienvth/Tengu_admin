@@ -1,18 +1,17 @@
 import React from 'react';
-import MTable from '../components/tb/MTable'
-
+import ChangePass from '../components/password/ChangePass';
 
 
 const Settings = () => {
     return (
         <div>
             <h2 className="page-header">
-               Test table
+               Setting
             </h2>
             <div className="col-12">
                 <div className="card">
                     <div className="card__body">
-                        <MTable/>   
+                        <ChangePass/>
                     </div>
                 </div>
 
