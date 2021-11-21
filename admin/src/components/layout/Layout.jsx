@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import './layout.css'
 
@@ -13,7 +13,19 @@ import { useSelector, useDispatch } from 'react-redux'
 import ThemeAction from '../../redux/actions/ThemeAction'
 
 const Layout = () => {
+    //
+    const adminUser = {
+        email:"admin@gmail.com",
+        password:"admin123"
+    }
 
+    const [admin, setAdmin ] = useState({email:""});
+    const [error, setError] = useState("");
+
+    const Login = details => {
+        console.log(details);
+    }
+    //
     const themeReducer = useSelector(state => state.ThemeReducer)
 
     const dispatch = useDispatch()
@@ -29,19 +41,24 @@ const Layout = () => {
     }, [dispatch])
 
     return (
-        <BrowserRouter>
-            <Route render={(props) => (
-                <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
-                    <Sidebar {...props}/>
-                    <div className="layout__content">
-                        <TopNav/>
-                        <div className="layout__content-main">
-                            <Routes/>
+        
+            
+            <BrowserRouter>
+                
+                <Route render={(props) => (
+                    <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
+                        <Sidebar {...props}/>
+                        <div className="layout__content">
+                            <TopNav/>
+                            <div className="layout__content-main">
+                                <Routes/>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}/>
-        </BrowserRouter>
+                )}/>
+                
+                
+            </BrowserRouter>   
     )
 }
 

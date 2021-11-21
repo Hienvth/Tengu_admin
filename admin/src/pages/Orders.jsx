@@ -21,12 +21,16 @@ const Customers = () => {
         {title:"Total Price", field:"totalPrice",align: "left", type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false, 
        },
         {title:"Date", field:"date", type:"date",filtering: false,sorting: false},
-        {title:"Status", field:"status", render: (rowData) => <div style={{ background: rowData.status = "delivered" ? "#008000aa" : "#f90000aa",width:"100px", height:"30px", fontWeight:"bold", color:"#fff",textAlign:"center",borderRadius:"4px",padding: 5  }}>{rowData.status == "delivered" ? "Delivered" : "Shipping"}</div>,
+        {title:"Status", field:"status", render: (rowData) => <div style={{ background: rowData.status == "delivered" ? "#008000aa" : "#f90000aa",width:"100px", height:"30px", fontWeight:"bold", color:"#fff",textAlign:"center",borderRadius:"4px",padding: 5  }}>{rowData.status == "delivered" ? "Delivered" : "Shipping"}</div>,
         searchable: false, export: false}
     ]
     
     return (
-        <MaterialTable columns={columns} data={tableData}
+      
+      <div className="col-12">
+          <div className="card">
+              <div className="card__body">
+              <MaterialTable columns={columns} data={tableData}
         editable={{
           onRowAdd: (newRow) => new Promise((resolve, reject) => {
             setTableData([...tableData, newRow])
@@ -91,7 +95,14 @@ const Customers = () => {
         
         title="Orders"
         icons={{ Add: () => <AddIcon /> }} />            
-        
+     
+              </div>
+          </div>
+
+      </div>
+ 
+
+ 
     )
 }
 
