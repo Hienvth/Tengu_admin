@@ -8,21 +8,19 @@ const Customers = () => {
 
 
     const [tableData, setTableData] = useState([
-        {name: "khach1", email:"abcd@gmail.com", phone:"0921213124", totalOrder:"211", totalSpend:"1000000", location:"long an"},
-        {name: "khach2", email:"abcd@gmail.com", phone:"0921213123", totalOrder:"1111", totalSpend:"1000000", location:"long an"},
-        {name: "khach3", email:"abcd@gmail.com", phone:"0921213122", totalOrder:"111", totalSpend:"1000000", location:"long an"},
-        {name: "khach4", email:"abcd@gmail.com", phone:"0921213119", totalOrder:"11", totalSpend:"1000000", location:"Long an"}
-        
+        {name: "khach1", birthday:"23/10/2222", email:"abcd@gmail.com", phone:"0921213124", address: "33, binh tan, Ho Chi Minh", account:"user1", password:"12345" },
+        {name: "khach2", birthday:"23/10/2222" ,email:"abcd@gmail.com", phone:"0921213124", address: "33, binh tan, Ho Chi Minh", account:"user1", password:"12345" },
+        {name: "khach11", birthday:"23/10/2222" ,email:"abcd@gmail.com", phone:"0921213124", address: "33, binh tan, Ho Chi Minh", account:"user1", password:"12345" },
+        {name: "khach31", birthday:"23/10/2222" ,email:"abcd@gmail.com", phone:"0921213124", address: "33, binh tan, Ho Chi Minh", account:"user1", password:"12345" },
       ])
       const columns = [
-        { title:""},
-         {title:"Name", field:"name"},
-         {title:"Email", field:"email", sorting:false},
-         {title:"Phone numbers", field:"phone", sorting:false},
-         {title:"Total Orders", field:"totalOrder", type:"numeric", align:"left", filtering: false},
-         {title:"Total Spend", field:"totalSpend",align: "left", filtering:false,type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false},
-         {title:"Location", field:"location"}   
-            
+        {title: "Name", field:"name"},
+        {title: "Birthday", field:"birthday"},
+        {title: "Email", field:"email", },
+        {title:"Phone", field:"phone"},
+        {title : "Address", field:"address"},
+        {title: "Account", field:"account"},
+        {title:"Password", field:"password"},    
     ]
     
     return (
