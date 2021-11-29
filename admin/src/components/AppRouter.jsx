@@ -1,6 +1,6 @@
 // import { Router } from "@material-ui/icons";
 import React from "react";
-
+import Login from "./login/Login";
 
 import { BrowserRouter as Router  , Link , Route, Switch, Redirect, useHistory } from 'react-router-dom';
 
@@ -32,14 +32,14 @@ function Admin() {
         <button  onClick ={logout} > Logout </button>
     </div>
 };
-function Login(){
-    let history = useHistory()
-    let login = () => {
-        localStorage.setItem("accessToken", true)
-        history.replace("/admin")
-    }
-    return <div>
-        <h2>Login</h2>
-        <button onClick = {login}>Login</button>
-    </div>
-};
+// function Login(){
+//     let history = useHistory()
+//     let login = () => {
+//         localStorage.setItem("accessToken", true)
+//         history.replace("/admin")
+//     }
+//     return <div>
+//         <h2>Login</h2>
+//         <button onClick = {login}>Login</button>
+//     </div>
+// };

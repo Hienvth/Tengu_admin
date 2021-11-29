@@ -33,16 +33,17 @@ export default function Login() {
         urlencoded.append("username", username);
         urlencoded.append("password", password);
 
-        var requestoption = {
+        var requestOption = {
             method: 'POST',
             headers: myHeaders,
             body: urlencoded,
             redirect:'follow'
         };
-
-        fetch("", requestoption)
+        console.log( requestOption)
+        fetch("https://learn-api.jmaster.io:8443/api/login", requestOption)
             .then(response => {
                 console.log(response)
+
                 if (response.ok) {
                     return response.json()
                 }
@@ -81,8 +82,7 @@ export default function Login() {
                         </Grid>
                         <br/>
     
-                        <TextField label='UserName' placeholder="Enter UserName"  
-                        onChange={setParams} fullWidth required/>
+                        <TextField label='UserName' placeholder="Enter UserName"  onChange={setParams} fullWidth required/>
                         
                         <br/>
                         <TextField label='PassWord' placeholder="Enter Password" type="password" onChange={setParams} fullWidth required />
