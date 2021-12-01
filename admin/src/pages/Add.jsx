@@ -15,7 +15,7 @@ const Customers = () => {
         
       ])
       const columns = [
-        { title:""},
+          
          {title:"Name", field:"name"},
          {title:"Email", field:"email", sorting:false},
          {title:"Phone numbers", field:"phone", sorting:false},

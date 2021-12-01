@@ -10,14 +10,14 @@ import { render } from '@testing-library/react';
 export default function Login() {
 
     let history = useHistory()
-    let [username, setUsername]  = useState("")
+    let [email , setEmail]  = useState("")
     let [password, setPassword]  = useState("")
     // let [isLogin, setLogin] = useState(localStorage.getItem("accessToken") != null)
 
 
     let setParams = (event) => {
-        if ( event.target.name == 'username') {
-            setUsername(event.target.value)
+        if ( event.target.name == 'email') {
+            setEmail(event.target.value)
         }
         if ( event.target.name == 'password') {
             setPassword(event.target.value)
@@ -27,23 +27,24 @@ export default function Login() {
 
     let login = () => {
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+        myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjVhNWZjOWM4Y2NlNGZiZmUwYTdkMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzODM2NjU2MywiZXhwIjoxNjM4NjI1NzYzfQ.lFynqMW0lFJTaTb-p7bJ17RgxTRnCN8a5Z4v6owCE3M");
+        myHeaders.append("Content-Type", "application/json");
 
-        var urlencoded = new URLSearchParams();
-        urlencoded.append("username", username);
-        urlencoded.append("password", password);
+        var raw = JSON.stringify ({
+            "email": email,
+            "password": password
+        });
 
-        var requestOption = {
+        var requestOptions = {
             method: 'POST',
             headers: myHeaders,
-            body: urlencoded,
+            body: raw,
             redirect:'follow'
         };
-        console.log( requestOption)
-        fetch("https://learn-api.jmaster.io:8443/api/login", requestOption)
+
+        fetch("https://tengu-nodejs.herokuapp.com/api/auth/login", requestOptions)
             .then(response => {
                 console.log(response)
-
                 if (response.ok) {
                     return response.json()
                 }
@@ -82,10 +83,10 @@ export default function Login() {
                         </Grid>
                         <br/>
     
-                        <TextField label='UserName' placeholder="Enter UserName"  onChange={setParams} fullWidth required/>
+                        <TextField label='UserName' name="email" placeholder="Enter UserName"  onChange={setParams} fullWidth required/>
                         
                         <br/>
-                        <TextField label='PassWord' placeholder="Enter Password" type="password" onChange={setParams} fullWidth required />
+                        <TextField label='PassWord' name="password" placeholder="Enter Password" type="password" onChange={setParams} fullWidth required />
                         <br/>
                         <FormControlLabel
                             control={

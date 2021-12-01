@@ -2,17 +2,17 @@
     {
         "icon": "bx bx-user",
         "content": "Profile",
-        "link":"profile"
+        "link":"/admin/profile"
     },
     
     {
         "icon": "bx bx-cog",
         "content": "Settings",
-        "link":"https://www.google.com.vn/?hl=vi"
+        "link":"/admin/settings"
     },
     {
         "icon": "bx bx-log-out-circle bx-rotate-180",
         "content": "Logout",
-        "link":"https://www.google.com.vn/?hl=vi"
+        "link":"/"
     }
 ]
