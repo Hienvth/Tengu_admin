@@ -46,8 +46,8 @@ export default function Login() {
               localStorage.setItem("accessToken", response.data.accessToken);
               localStorage.setItem("id", response.data._id);
               localStorage.setItem("email", response.data.email);
-              localStorage.setItem("first", response.data.firstname);
-              localStorage.setItem("lastname", response.data.lastname);
+              localStorage.setItem("first", response.data.firstName);
+              localStorage.setItem("lastname", response.data.lastName);
               localStorage.setItem("isAdmin", response.data.isAdmin);
               alert("Đăng nhập thành công");
               history.replace("/admin")
