@@ -42,8 +42,17 @@ export default function Login() {
           if (response.data.status_code === 404) {
             alert("Sai email hoặc password");
           } else {
-            localStorage.setItem("accessToken", response.data.accessToken);
-            alert("Đăng nhập thành công");
+            if(response.data.isAdmin === true) {
+              localStorage.setItem("accessToken", response.data.accessToken);
+              localStorage.setItem("id", response.data._id);
+              localStorage.setItem("email", response.data.email);
+              localStorage.setItem("first", response.data.firstname);
+              localStorage.setItem("lastname", response.data.lastname);
+              localStorage.setItem("isAdmin", response.data.isAdmin);
+              alert("Đăng nhập thành công");
+              history.replace("/admin")
+            }
+            else {alert("Sai email hoặc password");}
           }
         })
         .catch((err) => {

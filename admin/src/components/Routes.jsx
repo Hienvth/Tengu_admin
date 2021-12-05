@@ -13,18 +13,34 @@ import Settings from '../pages/Settings'
 const Routes = () => {
     return (
         <Switch>
-            <Route path='/' exact component={Dashboard}/>
-            <Route path='/customers' component={Customers}/>
-            <Route path='/products' component={Products}/>
-            <Route path='/orders' component={Orders}/>
-            <Route path='/analytics' component={Analytics}/>
-            <Route path='/add' component={Add}/>
-            <Route path='/profile' component={Profile}/>
+            <Route path='/admin' exact component={Dashboard}/>
+            <Route path='/admin/customers' component={Customers}/>
+            <Route path='/admin/products' component={Products}/>
+            <Route path='/admin/orders' component={Orders}/>
+            <Route path='/admin/analytics' component={Analytics}/>
+            <Route path='/admin/add' component={Add}/>
+            <Route path='/admin/profile' component={Profile}/>
         
-            <Route path='/settings' component={Settings}/>
+            <Route path='/admin/settings' component={Settings}/>
         
         </Switch>
     )
 }
 
 export default Routes
+
+
+
+
+// export default function Routes() {
+//     return (
+//         <Switch>
+//             Route.map((item, index) => {
+//                 return <Route  key={index} path={item.path} render={() => item.component}>
+
+//                 </Route>
+//             })
+
+//         </Switch>
+//     )
+// }
