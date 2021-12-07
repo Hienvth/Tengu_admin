@@ -1,0 +1,35 @@
+.card__body1{
+    height: 300px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse:  collapse;
+    box-shadow: 0 5px 10px #EEEEEE;
+    background-color: white;
+    text-align: left;
+    overflow: hidden;
+}
+thead{
+    box-shadow: 0 5px 10px #EEEEEE;
+}
+th{
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+
+}
+td{
+    padding: 1rem 2rem;
+
+}
+
+td p {
+    color: black;
+}

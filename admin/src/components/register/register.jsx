@@ -27,7 +27,7 @@ export default function FormDialog() {
         <AddIcon/>
         Create new
       </Button>
-      <Dialog open={open} onClose={handleClose} maxWidth="xs">
+      <Dialog open={open} onClose={handleClose} maxWidth="lg">
         <DialogTitle>
           <h4>Create New Product</h4>
         </DialogTitle>

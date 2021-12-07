@@ -9,7 +9,7 @@ import {
   Divider,
   Typography,
 } from "@material-ui/core";
-import avt from "../../assets/images/tuat.png";
+import avt from "../../assets/images/admin.png";
 import { useState, useEffect } from "react";
 import axios from 'axios'
 const user = {
@@ -43,8 +43,7 @@ const AccountProfile = (props) => {
           <Avatar
             src={avt}
             sx={{
-              height: 100,
-              width: 100,
+              width: 56, height: 56
             }}
           />
           <Typography color="textPrimary" gutterBottom variant="h3">
@@ -59,11 +58,11 @@ const AccountProfile = (props) => {
         </Box>
       </CardContent>
       <Divider />
-      <CardActions>
+      {/* <CardActions>
         <Button color="primary" fullWidth variant="text">
           Upload picture
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 };

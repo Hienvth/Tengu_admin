@@ -4,7 +4,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import axios from "axios";
 
-const Customers = () => {
+const Orders = () => {
   const [tableData, setTableData] = useState([
     {
       orderId: "#0001",
@@ -173,7 +173,7 @@ const Customers = () => {
               columnsButton: true,
               rowStyle: (data, index) =>
                 index % 2 === 0 ? { background: "#f5f5f5" } : null,
-              headerStyle: { background: "#f44336", color: "#fff" },
+                headerStyle: { background: "#33B0FF ",color:"#fff"}
             }}
             title="Orders"
             icons={{ Add: () => <AddIcon /> }}
@@ -184,4 +184,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Orders;

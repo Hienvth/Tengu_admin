@@ -14,7 +14,7 @@ import StatusCard from "../components/status-card/StatusCard";
 import Badge from "../components/badge/Badge";
 
 import statusCards from "../assets/JsonData/status-card-data.json";
-
+import "../../src/assets/css/tableDashboard.css"
 const chartOptions = {
   series: [
     {
@@ -59,110 +59,13 @@ const chartOptions = {
   },
 };
 
-// const topCustomers = {
-//   head: ["user", "total spending"],
-//   body: [
-//       {
-//           username: "john doe",
-//           order: "490",
-//           price: "$15,870"
-//       },
-//       {
-//           "username": "frank iva",
-//           "order": "250",
-//           "price": "$12,251"
-//       },
-//       {
-//           "username": "anthony baker",
-//           "order": "120",
-//           "price": "$10,840"
-//       },
-//       {
-//           "username": "frank iva",
-//           "order": "110",
-//           "price": "$9,251"
-//       },
-//       {
-//           "username": "anthony baker",
-//           "order": "80",
-//           "price": "$8,840"
-//       }
-//   ]
-// };
-
-// const renderCusomerHead = (item, index) => <th key={index}>{item}</th>;
-
-// const renderCustomerBody = (item, index) => (
-//   <tr key={index}>
-//     <td>{item.firstName}</td>
-//     <td>{item.order}</td>
-//     <td>{item.price}</td>
-//   </tr>
-// );
-
-// const latestOrders = {
-//   header: ["order id", "user", "total price", "date", "status"],
-//   body: [
-//     {
-//       id: "#OD1711",
-//       user: "john doe",
-//       date: "17 Jun 2021",
-//       price: "$900",
-//       status: "shipping",
-//     },
-//     {
-//       id: "#OD1712",
-//       user: "frank iva",
-//       date: "1 Jun 2021",
-//       price: "$400",
-//       status: "paid",
-//     },
-
-//     {
-//       id: "#OD1713",
-//       user: "anthony baker",
-//       date: "27 Jun 2021",
-//       price: "$200",
-//       status: "pending",
-//     },
-//     {
-//       id: "#OD1712",
-//       user: "frank iva",
-//       date: "1 Jun 2021",
-//       price: "$400",
-//       status: "paid",
-//     },
-//     {
-//       id: "#OD1713",
-//       user: "anthony baker",
-//       date: "27 Jun 2021",
-//       price: "$200",
-//       status: "pending",
-//     },
-//   ],
-// };
-
 const orderStatus = {
   shipping: "primary",
   pending: "warning",
   paid: "success",
   refund: "danger",
 };
-
-// // const renderOrderHead = (item, index) => <th key={index}>{item}</th>;
-
-// // const renderOrderBody = (item, index) => (
-// //   <tr key={index}>
-// //     <td>{item.id}</td>
-// //     <td>{item.user}</td>
-// //     <td>{item.price}</td>
-// //     <td>{item.date}</td>
-// //     <td>
-// //       <Badge type={orderStatus[item.status]} content={item.status} />
-// //     </td>
-// //   </tr>
-// );
-//???? 
+ 
 const Dashboard = () => {
   const [topCustomer, setTopCustomer] = useState([]);
   const [latestorders, setLatestOrder] = useState([]);
@@ -239,24 +142,34 @@ const Dashboard = () => {
             <div className="card__header">
               <h3>top customers</h3>
             </div>
-            <div className="card__body">
+            <div className="card__body1">
               {/* <Table
                 // headData={topCustomers.head}
                 // renderHead={(item, index) => renderCusomerHead(item, index)}
                 // bodyData={topCustomers.body}
                 // renderBody={(item, index) => renderCustomerBody(item, index)}
               /> */}
-              <tr>
-                <td><b>Username</b></td>
-                <td><b>Total Spending</b></td>
-              </tr>
-              {topCustomer.map((idx) => (
-                  <tr id={idx._id}>
-                      <td>{idx.firstName}</td>
-                      {/* <td>{idx.total_orders}</td> */}
-                      <td style={{paddingLeft: "40px"}}>{idx.total_spending}</td>
-                    </tr>
-                ))}
+              <table>
+                <thead>
+                  <tr className="tb_left">
+                    <th><a>Username</a></th>
+                    <th><a>Total Spending</a></th>
+                  </tr>
+                </thead>
+                <tbody>
+                {topCustomer.map((idx) => (
+                    <tr id={idx._id}>
+                        <td>{idx.firstName}</td>
+                        {/* <td>{idx.total_orders}</td> */}
+                        <td style={{paddingLeft: "40px"}}>{idx.total_spending}</td>
+                      </tr>
+                  ))}
+                </tbody>
+              </table>
+
+
+              
+                
             </div>
             <div className="card__footer">
               <Link to="/">view all</Link>
@@ -268,31 +181,35 @@ const Dashboard = () => {
             <div className="card__header">
               <h3>latest orders</h3>
             </div>
-            <div className="card__body">
-              {/* <Table
-                headData={latestOrders.header}
-                renderHead={(item, index) => renderOrderHead(item, index)}
-                bodyData={latestOrders.body}
-                renderBody={(item, index) => renderOrderBody(item, index)}
-              /> */}
-              <tr>
-                <td><b>ID</b></td>
-                <td style={{paddingLeft: "25px"}}><b>Username</b></td>
-                <td style={{paddingLeft: "40px"}}><b>Total price</b></td>
-                <td style={{paddingLeft: "40px"}}><b>Date</b></td>
-                <td style={{paddingLeft: "70px"}}><b>Status</b></td>
-              </tr>
-              {latestorders.map((idx)=>(
-                <tr id={idx._id}>
-                  <td>{idx._id.slice(10,15)}</td>
-                  <td style={{paddingLeft: "50px"}}>{idx.customerName}</td>
-                  <td style={{paddingLeft: "40px"}}>{idx.payableAmount}</td>
-                  <td style={{paddingLeft: "10px"}} >{idx.createdAt.slice(0,10)}</td>
-                  <td style={{paddingLeft: "60px"}}>
-                    <Badge type={orderStatus[idx.status]} content={idx.status} />
-                  </td>
-              </tr>
-              ))}
+            <div className="card__body1">
+                  
+
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th> Username</th>
+                        <th >Total price</th>
+                        <th>Date</th>
+                        <th >Statusb</th>
+                      </tr>
+                    </thead>
+                    <tbody>      
+                      {latestorders.map((idx)=>(
+                        <tr id={idx._id}>
+                          <td>{idx._id.slice(10,15)}</td>
+                          <td>{idx.customerName}</td>
+                          <td>{idx.payableAmount}</td>
+                          <td>{idx.createdAt.slice(0,10)}</td>
+                          <td className="status">
+                          <Badge type={orderStatus[(idx.status === "pending") ? "pending" : "paid"]} content={idx.status} />
+                          </td>
+                      </tr>
+                       ))}
+                  </tbody>
+                  </table>
+                  
+             
             </div>
             <div className="card__footer">
               <Link to="/">view all</Link>

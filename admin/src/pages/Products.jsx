@@ -13,7 +13,7 @@ const Products = () => {
 
 
     const [tableData, setTableData] = useState([
-        {id:"", name: "Picture1", price:"80000", discount:"4", actualPrice:"82000", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good good good good good good good good good good good good good good good good good good good good", createAt:"20/1/2021" },
+        {id:"", name: "Picture1", price:"80000", discount:"4",size:"120x240cm" , actualPrice:"", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good good good good good good good good good good good good good good good good good good good good", createAt:"20/1/2021" },
         
       ])
       const columns = [
@@ -22,7 +22,8 @@ const Products = () => {
             {title: "Name", field:"name"},
             {title: "Price", field:"price",align: "left", type:"currency",currencySetting:{currencyCode:"VND", minimumFractionDigits: 0, locate:"vn" } },
             {title:"Discount", field:"discount",align: "left", type:"numeric",lookup:{1:"1%", 2:"2%", 3:"3%", 4:"4%"} },
-            {title:"ActualPrice", field:"actualPrice",align: "left", type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false},
+            {title: "Size", field:"size"},
+            //{title:"ActualPrice", field:"actualPrice",align: "left", type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false},
             {title:"Quanlity", field:"quanlity", type:"numeric", align:"center"},
 
             {title:"Photo",field:"photo", grouping: false, render: item => <img src={item.photo} alt="" border="3" height="80" width="60px"   />,filtering: false  },

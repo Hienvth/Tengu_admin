@@ -3,13 +3,16 @@ import {Grid} from "@material-ui/core";
 import React , { useState , useEffect} from "react";
 import {useForm, Form} from "./useForm";
 import Controls from "../control/Controls";
+import * as employeeService  from "./employeeService";
+
 const initialFvalues = {
-    Photo: new Image(),
+    Photo:'',
     name:'',
     price:'',
     discount: '',
     size:'',
-    quality:'',
+    categoryi:'',
+    quality:'', 
     Description:'',
     createAt: new Date(),
     
@@ -18,12 +21,9 @@ const initialFvalues = {
 export default function EmployeeForm () {
     
     
-    const validate = ( fieldValues = values) => {
-        const temp = {};
-        
-    }
+    
 
-  const { values, setValues, errors, setErrors, handleInputChange, resetForm } = useForm(initialFvalues, true, validate);
+  const { values, setValues, errors, setErrors, handleInputChange, resetForm } = useForm(initialFvalues);
     // const {
     //     values,
     //     setValues,
@@ -43,8 +43,8 @@ export default function EmployeeForm () {
 
     return (
         <Form>
-            <Grid container >
-                <Grid item  xs= {11}>
+            <Grid >
+                <Grid item  xs= {6}>
                     {/* <TextField
                         variant= "outlined"
                         label="Photo"
@@ -52,6 +52,7 @@ export default function EmployeeForm () {
                         values = {values.Photo}
                         onChange={handleInputChange}
                     /> */}
+                   
                     <Controls.Input
                         name= "name"
                         label= "Name"
@@ -101,7 +102,7 @@ export default function EmployeeForm () {
                     />
 
                 </Grid>
-                <Grid item xs= {11}>
+                <Grid item  xs= {6}  sx={{ m: 1, minWidth: 120 }}>
                     <Controls.Input
                         name="discount"
                         label="Discount"
@@ -115,6 +116,17 @@ export default function EmployeeForm () {
                         onChange={handleInputChange}
 
                     /> */}
+                     <Controls.Select
+                        
+                        name="category"
+                        label="Category"
+                        
+                        value={values.categoryi}
+                        onChange={handleInputChange}
+                        options={employeeService.getDepartmentCollection()}
+                       
+
+                    />
                     <Controls.Input
                         name="Description"
                         label="Description"
@@ -133,6 +145,7 @@ export default function EmployeeForm () {
                         
                         
                     />
+
                     <div>
                         <Controls.Button
                             type= "submit"
@@ -143,6 +156,7 @@ export default function EmployeeForm () {
                             color = "default"
                             
                         />
+                    
                     </div>
 
                 </Grid>

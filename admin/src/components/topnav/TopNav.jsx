@@ -9,7 +9,7 @@ import Dropdown from '../dropdown/Dropdown'
 
 //import notifications from '../../assets/JsonData/notification.json'
 
-import user_image from '../../assets/images/tuat.png'
+import user_image from '../../assets/images/admin.png'
 
 import user_menu from '../../assets/JsonData/user_menus.json'
 
@@ -31,7 +31,8 @@ const renderUserToggle = (user) => (
             <img src={user.image} alt="" />
         </div>
         <div className="topnav__right-user__name">
-            {user.display_name}
+            {/* {user.display_name} */}
+
         </div>
     </div>
 )
