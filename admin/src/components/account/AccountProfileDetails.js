@@ -33,12 +33,14 @@ const AccountProfileDetails = (props) => {
   });
   const id = localStorage.getItem("id").toString();
   const token = localStorage.getItem("accessToken").toString();
+  
   useEffect(() => {
     const getApiUrl = "https://tengu-nodejs.herokuapp.com/api/customer/find/" + id;
     axios.get(getApiUrl, { headers: { token: token } }).then((response) => {
       setValues(response.data);
     });
   }, []);
+
 
   const handleChange = (event) => {
     setValues({
