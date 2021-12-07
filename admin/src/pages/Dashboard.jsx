@@ -75,6 +75,7 @@ const Dashboard = () => {
   const analyticsUrl = "https://tengu-nodejs.herokuapp.com/api/order/statistics"
   const token = localStorage.getItem("accessToken");
   
+
   useEffect(() => {
     axios.get(analyticsUrl, { headers: { token: token } })
     .then((response) => {
@@ -105,16 +106,28 @@ const Dashboard = () => {
       <div className="row">
         <div className="col-6">
           <div className="row">
-            {statusCards.map((item, index) => (
-              <div className="col-6" key={index}>
+              <div className="col-6" id="1">
                 <StatusCard
-                  icon={item.icon}
-                  count={item.count}
-                  title={item.title}
+                  icon="bx bx-shopping-bag"
+                  count={analytics.totalSales}
+                  title="Total sales"
                 />
               </div>
-            ))}
-          </div>
+              <div className="col-6" id="2">
+                <StatusCard
+                  icon="bx bx-dollar-circle"
+                  count={analytics.totalIncome}
+                  title="Total income"
+                />
+              </div>
+              <div className="col-6" id="3">
+                <StatusCard
+                  icon="bx bx-receipt"
+                  count={analytics.totalOrders}
+                  title="Total orders"
+                />
+              </div>
+        </div>
         </div>
         <div className="col-6">
           <div className="card full-height">
@@ -181,6 +194,7 @@ const Dashboard = () => {
             <div className="card__header">
               <h3>latest orders</h3>
             </div>
+<<<<<<< HEAD
             <div className="card__body1">
                   
 
@@ -210,6 +224,33 @@ const Dashboard = () => {
                   </table>
                   
              
+=======
+            <div className="card__body">
+              {/* <Table
+                headData={latestOrders.header}
+                renderHead={(item, index) => renderOrderHead(item, index)}
+                bodyData={latestOrders.body}
+                renderBody={(item, index) => renderOrderBody(item, index)}
+              /> */}
+              <tr>
+                <td><b>ID</b></td>
+                <td style={{paddingLeft: "25px"}}><b>Username</b></td>
+                <td style={{paddingLeft: "40px"}}><b>Total price</b></td>
+                <td style={{paddingLeft: "40px"}}><b>Date</b></td>
+                <td style={{paddingLeft: "70px"}}><b>Status</b></td>
+              </tr>
+              {latestorders.map((idx)=>(
+                <tr id={idx._id}>
+                  <td>{idx._id.slice(10,15)}</td>
+                  <td style={{paddingLeft: "50px"}}>{idx.customerName}</td>
+                  <td style={{paddingLeft: "40px"}}>{idx.payableAmount}</td>
+                  <td style={{paddingLeft: "10px"}} >{idx.createdAt.slice(0,10)}</td>
+                  <td style={{paddingLeft: "60px"}}>
+                    <Badge type={orderStatus[(idx.status === "pending") ? "pending" : "paid"]} content={idx.status} />
+                  </td>
+              </tr>
+              ))}
+>>>>>>> ec070c4bb48646b70510155eb2ff9aecb2e80662
             </div>
             <div className="card__footer">
               <Link to="/">view all</Link>
