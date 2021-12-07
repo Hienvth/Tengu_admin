@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MaterialTable from 'material-table'
+import axios from 'axios';
 //import DeleteIcon from '@material-ui/icons/Delete';
 //import AddIcon from '@material-ui/icons/Add';
 
@@ -7,26 +8,33 @@ import MaterialTable from 'material-table'
 const Customers = () => {
 
 
-    const [tableData, setTableData] = useState([
-        {name: "khach1", email:"abcd@gmail.com", phone:"0921213124", totalOrder:"211", totalSpend:"1000000", location:"long an"},
-        {name: "khach2", email:"abcd@gmail.com", phone:"0921213123", totalOrder:"1111", totalSpend:"1000000", location:"long an"},
-        {name: "khach3", email:"abcd@gmail.com", phone:"0921213122", totalOrder:"111", totalSpend:"1000000", location:"long an"},
-        {name: "khach4", email:"abcd@gmail.com", phone:"0921213119", totalOrder:"11", totalSpend:"1000000", location:"Long an"}
+    // const [tableData, setTableData] = useState([
+    //     {name: "khach1", email:"abcd@gmail.com", phone:"0921213124", totalOrder:"211", totalSpend:"1000000", location:"long an"},
+    //     {name: "khach2", email:"abcd@gmail.com", phone:"0921213123", totalOrder:"1111", totalSpend:"1000000", location:"long an"},
+    //     {name: "khach3", email:"abcd@gmail.com", phone:"0921213122", totalOrder:"111", totalSpend:"1000000", location:"long an"},
+    //     {name: "khach4", email:"abcd@gmail.com", phone:"0921213119", totalOrder:"11", totalSpend:"1000000", location:"Long an"}
         
-      ])
+    //   ])
+
+    const [topCustomers, setTopCustomers] = useState([])
+    const topCustomersUrl = "https://tengu-nodejs.herokuapp.com/api/analytics/topcustomer"
+    const token = localStorage.getItem("accessToken");
+    useEffect(() => {
+      axios.get(topCustomersUrl,{headers: {token: token}}).then((response)=>{setTopCustomers(response.data.message)})
+    },[])
       const columns = [
           
-         {title:"Name", field:"name"},
+         {title:"Name", field:"firstName"},
          {title:"Email", field:"email", sorting:false},
          {title:"Phone numbers", field:"phone", sorting:false},
-         {title:"Total Orders", field:"totalOrder", type:"numeric", align:"left", filtering: false},
-         {title:"Total Spend", field:"totalSpend",align: "left", filtering:false,type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false},
-         {title:"Location", field:"location"}   
+         {title:"Total Orders", field:"total_orders", type:"numeric", align:"left", filtering: false},
+         {title:"Total Spend", field:"total_spending",align: "left", filtering:false,type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false},
+         {title:"Location", field:"address"}   
             
     ]
     
     return (
-        <MaterialTable columns={columns} data={tableData}
+        <MaterialTable columns={columns} data={topCustomers}
         // editable={{
         //   onRowAdd: (newRow) => new Promise((resolve, reject) => {
         //     setTableData([...tableData, newRow])
