@@ -194,7 +194,7 @@ const Dashboard = () => {
             <div className="card__header">
               <h3>latest orders</h3>
             </div>
-<<<<<<< HEAD
+
             <div className="card__body1">
                   
 
@@ -224,34 +224,7 @@ const Dashboard = () => {
                   </table>
                   
              
-=======
-            <div className="card__body">
-              {/* <Table
-                headData={latestOrders.header}
-                renderHead={(item, index) => renderOrderHead(item, index)}
-                bodyData={latestOrders.body}
-                renderBody={(item, index) => renderOrderBody(item, index)}
-              /> */}
-              <tr>
-                <td><b>ID</b></td>
-                <td style={{paddingLeft: "25px"}}><b>Username</b></td>
-                <td style={{paddingLeft: "40px"}}><b>Total price</b></td>
-                <td style={{paddingLeft: "40px"}}><b>Date</b></td>
-                <td style={{paddingLeft: "70px"}}><b>Status</b></td>
-              </tr>
-              {latestorders.map((idx)=>(
-                <tr id={idx._id}>
-                  <td>{idx._id.slice(10,15)}</td>
-                  <td style={{paddingLeft: "50px"}}>{idx.customerName}</td>
-                  <td style={{paddingLeft: "40px"}}>{idx.payableAmount}</td>
-                  <td style={{paddingLeft: "10px"}} >{idx.createdAt.slice(0,10)}</td>
-                  <td style={{paddingLeft: "60px"}}>
-                    <Badge type={orderStatus[(idx.status === "pending") ? "pending" : "paid"]} content={idx.status} />
-                  </td>
-              </tr>
-              ))}
->>>>>>> ec070c4bb48646b70510155eb2ff9aecb2e80662
-            </div>
+     </div>
             <div className="card__footer">
               <Link to="/">view all</Link>
             </div>
