@@ -49,7 +49,7 @@ export default function Login() {
               localStorage.setItem("first", response.data.firstName);
               localStorage.setItem("lastname", response.data.lastName);
               localStorage.setItem("isAdmin", response.data.isAdmin);
-              alert("Đăng nhập thành công");
+              // alert("Đăng nhập thành công");
               history.replace("/admin")
             }
             else {alert("Sai email hoặc password");}

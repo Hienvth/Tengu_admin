@@ -166,10 +166,19 @@ const orderStatus = {
 const Dashboard = () => {
   const [topCustomer, setTopCustomer] = useState([]);
   const [latestorders, setLatestOrder] = useState([]);
-  const topCustomerUrl = "http://localhost:5000/api/analytics/top-customer";
-  const latestOrderUrl = "http://localhost:5000/api/analytics/latest-orders";
+  const [analytics, setAnalytics] = useState({});
+  const topCustomerUrl = "https://tengu-nodejs.herokuapp.com/api/analytics/top-customer";
+  const latestOrderUrl = "https://tengu-nodejs.herokuapp.com/api/analytics/latest-orders";
+  const analyticsUrl = "https://tengu-nodejs.herokuapp.com/api/order/statistics"
   const token = localStorage.getItem("accessToken");
   
+  useEffect(() => {
+    axios.get(analyticsUrl, { headers: { token: token } })
+    .then((response) => {
+      setAnalytics(response.data);
+    });
+  },[]);
+
   useEffect(() => {
     axios.get(topCustomerUrl, { headers: { token: token } })
     .then((response) => {
