@@ -2,12 +2,12 @@ import React from 'react'
 
 import './topnav.css'
 
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 import Dropdown from '../dropdown/Dropdown'
 
 
-import notifications from '../../assets/JsonData/notification.json'
+//import notifications from '../../assets/JsonData/notification.json'
 
 import user_image from '../../assets/images/tuat.png'
 

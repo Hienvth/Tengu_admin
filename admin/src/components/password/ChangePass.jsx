@@ -3,15 +3,14 @@ import {
   Avatar,
   Button,
   Grid,
-  Link,
+  
   Paper,
   TextField,
-  Typography,
+  
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import "./changePass.css";
+//import Checkbox from "@material-ui/core/Checkbox";
+//import "./changePass.css";
 import axios from "axios";
 const ChangePass = () => {
   //const paperStyle = {padding: 20, height:'70vh', width: 300, margin: "20px auto"}

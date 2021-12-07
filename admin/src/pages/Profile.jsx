@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet';
 import {
   Box,
   Container,
@@ -9,9 +8,7 @@ import AccountProfileDetails from '../components/account/AccountProfileDetails';
 
 const Account = () => (
   <>
-    <Helmet>
-      <title>Account | Material Kit</title>
-    </Helmet>
+    
     <Box
       sx={{
         backgroundColor: 'background.default',

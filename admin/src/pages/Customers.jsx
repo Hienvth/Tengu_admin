@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import MaterialTable from 'material-table'
-import DeleteIcon from '@material-ui/icons/Delete';
-import AddIcon from '@material-ui/icons/Add';
 
 
 const Customers = () => {
@@ -20,7 +18,7 @@ const Customers = () => {
         {title:"Phone", field:"phone"},
         {title : "Address", field:"address"},
         {title: "Account", field:"account"},
-        {title:"Password", field:"password"},    
+            
     ]
     
     return (
@@ -28,26 +26,26 @@ const Customers = () => {
       <div className="card">
           <div className="card__body">
                   <MaterialTable columns={columns} data={tableData}
-                  editable={{
-                    onRowAdd: (newRow) => new Promise((resolve, reject) => {
-                      setTableData([...tableData, newRow])
+                  // editable={{
+                  //   onRowAdd: (newRow) => new Promise((resolve, reject) => {
+                  //     setTableData([...tableData, newRow])
 
-                      setTimeout(() => resolve(), 500)
-                    }),
-                    onRowUpdate: (newRow, oldRow) => new Promise((resolve, reject) => {
-                      const updatedData = [...tableData]
-                      updatedData[oldRow.tableData.id] = newRow
-                      setTableData(updatedData)
-                      setTimeout(() => resolve(), 500)
-                    }),
-                    onRowDelete: (selectedRow) => new Promise((resolve, reject) => {
-                      const updatedData = [...tableData]
-                      updatedData.splice(selectedRow.tableData.id, 1)
-                      setTableData(updatedData)
-                      setTimeout(() => resolve(), 1000)
+                  //     setTimeout(() => resolve(), 500)
+                  //   }),
+                  //   onRowUpdate: (newRow, oldRow) => new Promise((resolve, reject) => {
+                  //     const updatedData = [...tableData]
+                  //     updatedData[oldRow.tableData.id] = newRow
+                  //     setTableData(updatedData)
+                  //     setTimeout(() => resolve(), 500)
+                  //   }),
+                  //   onRowDelete: (selectedRow) => new Promise((resolve, reject) => {
+                  //     const updatedData = [...tableData]
+                  //     updatedData.splice(selectedRow.tableData.id, 1)
+                  //     setTableData(updatedData)
+                  //     setTimeout(() => resolve(), 1000)
 
-                    })
-                  }}
+                  //   })
+                  // }}
                   // actions={[
                   //   {
                   //     icon: () => <DeleteIcon />,
@@ -86,11 +84,14 @@ const Customers = () => {
                       // color:"primary"
                     }),
                     grouping: true, columnsButton: true,
-                    rowStyle: (data, index) => index % 2 === 0 ? { background: "#f5f5f5" } : null,
-                    headerStyle: { background: "#f44336",color:"#fff"}
+                    //rowStyle: (data, index) => index % 2 === 0 ? { background: "#f5f5f5" } : null,
+                    rowStyle: {background:"#f5f5f5", height:"40px"},
+                    headerStyle: { background: "#33B0FF ",color:"#fff"}
+                    //headerStyle: { background: "#f44336",color:"#fff"}
                   }}
+                  
                   title="Customers Information"
-                  icons={{ Add: () => <AddIcon /> }} />            
+                   />            
                   
                         </div>
                     </div>
