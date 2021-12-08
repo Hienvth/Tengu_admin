@@ -39,38 +39,7 @@ const Customers = () => {
           <MaterialTable
             columns={columns}
             data={customers}
-            // editable={{
-            //   onRowAdd: (newRow) => new Promise((resolve, reject) => {
-            //     setTableData([...tableData, newRow])
-
-            //     setTimeout(() => resolve(), 500)
-            //   }),
-            //   onRowUpdate: (newRow, oldRow) => new Promise((resolve, reject) => {
-            //     const updatedData = [...tableData]
-            //     updatedData[oldRow.tableData.id] = newRow
-            //     setTableData(updatedData)
-            //     setTimeout(() => resolve(), 500)
-            //   }),
-            //   onRowDelete: (selectedRow) => new Promise((resolve, reject) => {
-            //     const updatedData = [...tableData]
-            //     updatedData.splice(selectedRow.tableData.id, 1)
-            //     setTableData(updatedData)
-            //     setTimeout(() => resolve(), 1000)
-
-            //   })
-            // }}
-            // actions={[
-            //   {
-            //     icon: () => <DeleteIcon />,
-            //     tooltip: "Delete",
-            //     onClick: (e, data) => new Promise((resolve, reject) => {
-
-            //     })
-            //   } ,
-
-            // isFreeAction:true
-
-            //        ]}
+            
             onSelectionChange={(selectedRows) => console.log(selectedRows)}
             options={{
               sorting: true,

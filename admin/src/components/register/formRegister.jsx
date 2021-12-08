@@ -23,7 +23,7 @@ export default function FormRegister(props) {
         <Dialog open={openFormR} maxWidth="md" >
             <DialogTitle className={classes.dialogTitle}>
                 <div style={{display:'flex'}}>
-                    <Typography variant="h6" component="div" style={{flexGrow :1}}>
+                    <Typography variant="h4" component="div" style={{flexGrow :1}}>
                          <div>Create New Product</div>
                 
                     </Typography>

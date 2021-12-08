@@ -103,12 +103,7 @@ const Orders = () => {
             columns={columns}
             data={orders}
             editable={{
-              onRowAdd: (newRow) =>
-                new Promise((resolve, reject) => {
-                  setTableData([...tableData, newRow]);
-
-                  setTimeout(() => resolve(), 500);
-                }),
+              
               onRowUpdate: (newRow, oldRow) =>
                 new Promise((resolve, reject) => {
                   // const updatedData = [...tableData];
