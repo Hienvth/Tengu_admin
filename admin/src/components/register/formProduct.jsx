@@ -122,9 +122,16 @@ export default function FormProduct() {
                         name="category"
                         label="Category"
                         
+                       
                         value={values.categoryi}
                         onChange={handleInputChange}
                         options={employeeService.getDepartmentCollection()}
+                        InputLabelProps={{
+                            shrink: true
+                          }}
+                        error={errors.categoryi}
+                        
+                        
                        
 
                     />
@@ -147,16 +154,12 @@ export default function FormProduct() {
                         
                     />
 
-                    <div>
+                    <div style={{display:'flex'}}>
                         <Controls.Button
                             type= "submit"
                             text= "Submit"
                         />
-                        <Controls.Button
-                            text= "Cancel"
-                            color = "default"
-                            
-                        />
+                        
                     
                     </div>
 
