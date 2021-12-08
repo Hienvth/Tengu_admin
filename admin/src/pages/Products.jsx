@@ -5,12 +5,22 @@ import FormDialog from '../components/register/register';
 
 import DeleteR from '../components/register/delete';
 
+import Controls from '../components/control/Controls';
 
+import { makeStyles } from '@material-ui/core';
+import AddIcon from "@material-ui/icons/Add"
+import FormRegister from '../components/register/formRegister';
+import FormProduct from '../components/register/formProduct';
+const useStyles = makeStyles( theme => ({
+      newButton : {
+        position: 'absolute',
+        
+      }
+}))
 
-
-
-const Products = () => {
-
+export default function  Products()  {
+    const classes = useStyles();
+    const [openFormR, setOpenFormR] = useState(false);
 
     const [tableData, setTableData] = useState([
         {id:"", name: "Picture1", price:"80000", discount:"4",size:"120x240cm" , actualPrice:"", quanlity:"2",photo:"https://picsum.photos/seed/picsum/200/300",description:" good good good good good good good good good good good good good good good good good good good good", createAt:"20/1/2021" },
@@ -38,34 +48,26 @@ const Products = () => {
       <div className="col-12">
           <div className="card">
               <div className="func" >
-                <FormDialog />
+                
+
+                {/* Button ad new  */}
+                <Controls.Button
+                  text ="Add new"
+                  variant ="outlined"
+                  startIcon = {<AddIcon/>}
+                  onClick = { () => setOpenFormR(true)}
+                  
+                  //className = {classes.newButton}
+                
+                />
+               
+
+
+
               </div>
               <div className="card__body">
               <MaterialTable columns={columns} data={tableData}
-                  // editable={{
-                  //   // onRowAdd: (newRow) => new Promise((resolve, reject) => {
-                  //   //   setTableData([...tableData, newRow])
-
-                  //   //   setTimeout(() => resolve(), 500)
-                  //   // }),
-                    
-                  //   //onRowUpdate: ({}),
-                  //   //  (newRow, oldRow) => new Promise((resolve, reject) => {
-                  //   //   const updatedData = [...tableData]
-                  //   //   updatedData[oldRow.tableData.id] = newRow
-                  //   //   setTableData(updatedData)
-                  //   //   setTimeout(() => resolve(), 500)
-                  //   // }),
-                  //   onRowDelete: (selectedRow) => new Promise((resolve, reject) => {
-                  //     const updatedData = [...tableData]
-                  //     updatedData.splice(selectedRow.tableData.id, 1)
-                  //     setTableData(updatedData)
-                  //     setTimeout(() => resolve(), 1000)
-                    
-                  //   })
-
-                    
-                  // }}
+                  
                   actions={[
                     {
                       icon: () => <DeleteR/>,
@@ -117,10 +119,15 @@ const Products = () => {
                         </div>
                     </div>
 
+                  <FormRegister
+                    openFormR = {openFormR}
+                    setOpenFormR = {setOpenFormR}
+                  >
+                    <FormProduct/>
+                  </FormRegister>
+
       </div>
   
       
     )
 }
-
-export default Products

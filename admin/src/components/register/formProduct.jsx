@@ -18,7 +18,7 @@ const initialFvalues = {
     
 }
 
-export default function EmployeeForm () {
+export default function FormProduct() {
     
     
     
@@ -102,10 +102,11 @@ export default function EmployeeForm () {
                     />
 
                 </Grid>
-                <Grid item  xs= {6}  sx={{ m: 1, minWidth: 120 }}>
+                <Grid item  xs= {6} >
                     <Controls.Input
                         name="discount"
                         label="Discount"
+                        type="numeric"
                         value={values.discount}
                         onChange={handleInputChange}
                     />
