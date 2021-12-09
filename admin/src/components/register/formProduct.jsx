@@ -18,7 +18,6 @@ const initialFvalues = {
   quality: "",
   Description: "",
 };
-<<<<<<< HEAD
 
 export default function EmployeeForm() {
 //   const { values, setValues, errors, setErrors, handleChange, resetForm } =
@@ -53,48 +52,13 @@ export default function EmployeeForm() {
   const [image, setImage] = useState("");
 
   let createProduct = () => {
+
     if (values.title === "" ||   values.price === "" || values.category === "" ||  values.size === "" ||  image === "") {
       alert("Đã xảy ra lỗi")
     }
     else {
 
     console.log(values)
-=======
-
-export default function EmployeeForm() {
-//   const { values, setValues, errors, setErrors, handleChange, resetForm } =
-//     useForm(initialFvalues);
-  // const {
-  //     values,
-  //     setValues,
-  //     errors,
-  //     handleInputChange
-  // } = useForm(initialFvalues);
-
-  const [values, setValues] = useState({
-    title: "",
-    desc: "",
-    category: "",
-    size: "",
-    price: 0,
-    discount_rate: "",
-    amount: 0
-  });
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-
-  const createProductUrl = "https://tengu-nodejs.herokuapp.com/api/product/";
-  const token = localStorage.getItem("accessToken");
-
-  const [image, setImage] = useState("");
-
-  let createProduct = () => {
->>>>>>> 5df01f86b9b91400b94089cb0acface597ce3a39
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "dhdxn5ok");
@@ -115,19 +79,11 @@ export default function EmployeeForm() {
             discount_rate: values.discount_rate,
             img: data.secure_url,
             cloudinary_id: data.public_id
-<<<<<<< HEAD
-        }, {headers: {token: token}}).then((result) => {alert("Thêm sản phẩm thành công")}).catch((err) => {console.log(err); alert("Đã xảy ra lỗi")}) 
-      }).catch((err) => {console.log(err); alert("Đã xảy ra lỗi")})  
-      .catch((err) => {console.log(err); alert("Đã xảy ra lỗi")});
-  };
-  }
-=======
         }, {headers: {token: token}}).then((result) => {alert("Thêm sản phẩm thành công")})
       })
       .catch((err) => {console.log(err); alert("Đã xảy ra lỗi")});
   };
-
->>>>>>> 5df01f86b9b91400b94089cb0acface597ce3a39
+}
   return (
     <Form>
       <Grid>
@@ -151,11 +107,7 @@ export default function EmployeeForm() {
               variant="outlined"
               label="Price"
               name="price"
-<<<<<<< HEAD
-              type="text" pattern="[0-9]*"
-=======
               type="numeric"
->>>>>>> 5df01f86b9b91400b94089cb0acface597ce3a39
             //   error={errors.price}
               values={values.price}
               onChange={handleChange}
@@ -164,11 +116,7 @@ export default function EmployeeForm() {
             <Controls.Input
               name="amount"
               label="Quality"
-<<<<<<< HEAD
-              type="text" pattern="[0-9]*"
-=======
               type="numeric"
->>>>>>> 5df01f86b9b91400b94089cb0acface597ce3a39
             //   error={errors.price}
               value={values.amount}
               onChange={handleChange}
@@ -197,10 +145,6 @@ export default function EmployeeForm() {
           <Controls.Input
             name="discount_rate"
             label="Discount"
-<<<<<<< HEAD
-            type="text" pattern="[0-9]*"
-=======
->>>>>>> 5df01f86b9b91400b94089cb0acface597ce3a39
             value={values.discount_rate}
             onChange={handleChange}
           />
@@ -246,8 +190,4 @@ export default function EmployeeForm() {
       </Grid>
     </Form>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 5df01f86b9b91400b94089cb0acface597ce3a39

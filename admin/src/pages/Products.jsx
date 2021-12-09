@@ -3,10 +3,9 @@ import MaterialTable from "material-table";
 
 import FormDialog from "../components/register/register";
 
-<<<<<<< HEAD
+
 import FormRegister from "../components/register/formRegister";
-=======
->>>>>>> 5df01f86b9b91400b94089cb0acface597ce3a39
+
 import DeleteR from "../components/register/delete";
 import axios from "axios";
 
@@ -68,11 +67,7 @@ const Products = () => {
     <div className="col-12">
       <div className="card">
         <div className="func">
-<<<<<<< HEAD
-          <FormDialog/>
-=======
           <FormDialog />
->>>>>>> 5df01f86b9b91400b94089cb0acface597ce3a39
         </div>
         <div className="card__body">
           <MaterialTable
@@ -179,8 +174,4 @@ const Products = () => {
   );
 };
 
-<<<<<<< HEAD
 export default Products;
-=======
-export default Products;
->>>>>>> 5df01f86b9b91400b94089cb0acface597ce3a39
