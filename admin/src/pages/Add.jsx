@@ -24,7 +24,10 @@ const Customers = () => {
     },[])
       const columns = [
           
-         {title:"Name", field:"firstName"},
+         {title:"Name",
+              
+         field:"firstName"
+        },
          {title:"Email", field:"email", sorting:false},
          {title:"Phone numbers", field:"phone", sorting:false},
          {title:"Total Orders", field:"total_orders", type:"numeric", align:"left", filtering: false},

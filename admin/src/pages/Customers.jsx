@@ -22,7 +22,8 @@ const Customers = () => {
   //     {name: "khach31", birthday:"23/10/2222" ,email:"abcd@gmail.com", phone:"0921213124", address: "33, binh tan, Ho Chi Minh", account:"user1", password:"12345" },
   //   ])
   const columns = [
-    { title: "Name", field: "firstName" },
+    { title: "Fisrt Name", field: "firstName"} ,
+    { title: "Last Name", field: "lastName"} ,
     // { title: "Birthday", field: "birthday" },
     { title: "Email", field: "email" },
     { title: "Phone", field: "phone" },

@@ -1,170 +1,193 @@
-import {Grid} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 //import { image } from "faker";
-import React , { useState , useEffect} from "react";
-import {useForm, Form} from "./useForm";
+import React, { useState, useEffect } from "react";
+import { useForm, Form } from "./useForm";
 import Controls from "../control/Controls";
-import * as employeeService  from "./employeeService";
+import * as employeeService from "./employeeService";
+import axios from "axios";
+
+// import FormData from 'form-data'
 
 const initialFvalues = {
-    Photo:'',
-    name:'',
-    price:'',
-    discount: '',
-    size:'',
-    categoryi:'',
-    quality:'', 
-    Description:'',
-    createAt: new Date(),
-    
-}
+  Photo: "",
+  name: "",
+  price: "",
+  discount: "",
+  size: "",
+  categoryi: "",
+  quality: "",
+  Description: "",
+};
 
-export default function FormProduct() {
-    
-    
-    
+export default function EmployeeForm() {
+//   const { values, setValues, errors, setErrors, handleChange, resetForm } =
+//     useForm(initialFvalues);
+  // const {
+  //     values,
+  //     setValues,
+  //     errors,
+  //     handleInputChange
+  // } = useForm(initialFvalues);
 
-  const { values, setValues, errors, setErrors, handleInputChange, resetForm } = useForm(initialFvalues);
-    // const {
-    //     values,
-    //     setValues,
-    //     errors,
-    //     handleInputChange
-    // } = useForm(initialFvalues);
+  const [values, setValues] = useState({
+    title: "",
+    desc: "",
+    category: "",
+    size: "",
+    price: 0,
+    discount_rate: "",
+    amount: 0
+  });
+  const handleChange = (event) => {
+    setValues({
+      ...values,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-    const [image, setImage] = useState(null);
 
-    const handleFileChange = (e) => {
-        if (e.target.files[0]) {
-          setImage(e.target.files[0]);
-        }
-      };
+  const createProductUrl = "https://tengu-nodejs.herokuapp.com/api/product/";
+  const token = localStorage.getItem("accessToken");
 
-     
+  const [image, setImage] = useState("");
 
-    return (
-        <Form>
-            <Grid >
-                <Grid item  xs= {6}>
-                    {/* <TextField
+  let createProduct = () => {
+    if (values.title === "" ||   values.price === "" || values.category === "" ||  values.size === "" ||  image === "") {
+      alert("Đã xảy ra lỗi")
+    }
+    else {
+
+    console.log(values)
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "dhdxn5ok");
+    data.append("cloud_name", "apk solution");
+    fetch("https://api.cloudinary.com/v1_1/apk-slution/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        axios.post(createProductUrl, {
+            title: values.title,
+            desc: values.desc,
+            price: values.price,
+            category: values.category,
+            size: values.size,
+            amount: values.amount,
+            discount_rate: values.discount_rate,
+            img: data.secure_url,
+            cloudinary_id: data.public_id
+        }, {headers: {token: token}}).then((result) => {alert("Thêm sản phẩm thành công")}).catch((err) => {console.log(err); alert("Đã xảy ra lỗi")}) 
+      }).catch((err) => {console.log(err); alert("Đã xảy ra lỗi")})  
+      .catch((err) => {console.log(err); alert("Đã xảy ra lỗi")});
+  };
+  }
+  return (
+    <Form>
+      <Grid>
+        <Grid item xs={6}>
+          {/* <TextField
                         variant= "outlined"
                         label="Photo"
                         name="photo"
                         values = {values.Photo}
                         onChange={handleInputChange}
                     /> */}
-                   
-                    <Controls.Input
-                        name= "name"
-                        label= "Name"
-                        value= {values.name}
-                        onChange = {handleInputChange}
-                    />
-                    <div style={{margin:'theme.spacing(0.5)'}}>
-                        
-                    <Controls.Input
-                        variant= "outlined"
-                        label="Price"
-                        name="price"
-                        type="numeric"
-                        error={errors.price}
-                        
-                        values = {values.price}
-                        onChange={handleInputChange}
-                        variant="outlined"
-                    />
-                    <Controls.Input
-                        name="quality"
-                        label="Quality"
-                        type="numeric"
-                        error={errors.price}
-                        
-                        value={values.quality}
-                        onChange={handleInputChange}
-                        variant="outlined"
-                    />
-                    </div>
-                    <Controls.Input
-                        name="size"
-                        label="Size"
-                        type="text"
-                        value={values.size}
-                        onChange={handleInputChange}
-                    />
-                    <Controls.Input
-                        label="Photo"
-                        name="photo"
-                        type="file"
-                        InputLabelProps={{
-                            shrink: true
-                        }}
-                        onChange={handleFileChange}
-                        variant="outlined"
-                    />
 
-                </Grid>
-                <Grid item  xs= {6} >
-                    <Controls.Input
-                        name="discount"
-                        label="Discount"
-                        type="numeric"
-                        value={values.discount}
-                        onChange={handleInputChange}
-                    />
-                    {/* <Controls.DateC
+          <Controls.Input
+            name="title"
+            label="Name"
+            value={values.title}
+            onChange={handleChange}
+          />
+          <div style={{ margin: "theme.spacing(0.5)" }}>
+            <Controls.Input
+              variant="outlined"
+              label="Price"
+              name="price"
+              type="text" pattern="[0-9]*"
+            //   error={errors.price}
+              values={values.price}
+              onChange={handleChange}
+              variant="outlined"
+            />
+            <Controls.Input
+              name="amount"
+              label="Quality"
+              type="text" pattern="[0-9]*"
+            //   error={errors.price}
+              value={values.amount}
+              onChange={handleChange}
+              variant="outlined"
+            />
+          </div>
+          <Controls.Input
+            name="size"
+            label="Size"
+            type="text"
+            value={values.size}
+            onChange={handleChange}
+          />
+          <Controls.Input
+            label="Photo"
+            name="img"
+            type="file"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => setImage(e.target.files[0])}
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={6} sx={{ m: 1, minWidth: 120 }}>
+          <Controls.Input
+            name="discount_rate"
+            label="Discount"
+            type="text" pattern="[0-9]*"
+            value={values.discount_rate}
+            onChange={handleChange}
+          />
+          {/* <Controls.DateC
                         name="createAt"
                         label="CreateAt"
                         value= {values.createAt}
-                        onChange={handleInputChange}
+                        onChange={handleChange}
 
                     /> */}
-                     <Controls.Select
-                        
-                        name="category"
-                        label="Category"
-                        
-                       
-                        value={values.categoryi}
-                        onChange={handleInputChange}
-                        options={employeeService.getDepartmentCollection()}
-                        InputLabelProps={{
-                            shrink: true
-                          }}
-                        error={errors.categoryi}
-                        
-                        
-                       
+          <Controls.Select
+            name="category"
+            label="Category"
+            value={values.category}
+            onChange={handleChange}
+            options={employeeService.getDepartmentCollection()}
+          />
+          <Controls.Input
+            name="desc"
+            label="Description"
+            type="text"
+            rowsmax={3}
+            rows={2}
+            multiline
+            value={values.desc}
+            onChange={handleChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            // error={errors.Description}
+            variant="outlined"
+          />
 
-                    />
-                    <Controls.Input
-                        name="Description"
-                        label="Description"
-                        type="text"
-                        rowsmax={3}
-                        rows={2}
-                        multiline
-                        
-                        value={values.Description}
-                        onChange={handleInputChange}
-                        InputLabelProps={{
-                            shrink: true
-                          }}
-                        error={errors.Description}
-                        variant="outlined"
-                        
-                        
-                    />
-
-                    <div style={{display:'flex'}}>
-                        <Controls.Button
-                            type= "submit"
-                            text= "Submit"
-                        />
-                        
-                    
-                    </div>
-
-                </Grid>
-            </Grid>
-        </Form>
-    )
+          <div>
+            <Controls.Button
+              // type="submit"
+              text="Submit"
+              onClick={createProduct}
+            />
+            <Controls.Button text="Cancel" color="default" />
+          </div>
+        </Grid>
+      </Grid>
+    </Form>
+  );
 }

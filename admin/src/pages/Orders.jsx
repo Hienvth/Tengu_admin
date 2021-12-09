@@ -6,41 +6,7 @@ import axios from "axios";
 
 const Orders = () => {
   const [tableData, setTableData] = useState([
-    {
-      orderId: "#0001",
-      customerName: "khach1",
-      totalPrice: 1000000,
-      date: "20/08/2021",
-      status: "delivered",
-    },
-    {
-      orderId: "#0002",
-      customerName: "khach2",
-      totalPrice: 1000000,
-      date: "20/02/2021",
-      status: "delivered",
-    },
-    {
-      orderId: "#0004",
-      customerName: "khach3",
-      totalPrice: 1000000,
-      date: "20/09/2021",
-      status: "shipping",
-    },
-    {
-      orderId: "#0003",
-      customerName: "khach2",
-      totalPrice: 1000000,
-      date: "22/08/2021",
-      status: "shipping",
-    },
-    {
-      orderId: "#0006",
-      customerName: "khach6",
-      totalPrice: 1000000,
-      date: "21/08/2021",
-      status: "",
-    },
+    
   ]);
 
   const [orders, setOrders] = useState([]);
@@ -54,7 +20,15 @@ const Orders = () => {
   console.log(orders);
   const columns = [
     // {title:"Order ID", field:"orderId"},
-    { title: "Customer Name", field: "customerName", sorting: false },
+    { title: "Customer Name", 
+
+      render: (orders) => {
+        return `${orders.customerId.firstName} ${orders.customerId.lastName}`;
+      },
+       field: "orders", sorting: false },
+    {
+      title: "Receiver", field: "customerName", sorting: false
+    },
     {
       title: "Total Price",
       field: "payableAmount",
@@ -63,6 +37,7 @@ const Orders = () => {
       currencySetting: { currencyCode: "VND", minimumFractionDigits: 0 },
       editing: false,
     },
+    
     {
       title: "Date",
       field: "createdAt",
@@ -70,6 +45,19 @@ const Orders = () => {
       filtering: false,
       sorting: false,
     },
+    {
+      title: "Updated Date",
+      field: "updatedAt",
+      type: "date",
+      filtering: false,
+      sorting: false,
+    },
+    { title: "address", 
+
+      render: (orders) => {
+        return `${orders.address.ward} , ${orders.address.district}, ${orders.address.province} `;
+      },
+       field: "orders", sorting: false },
     {
       title: "Status",
       field: "status",

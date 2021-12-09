@@ -165,6 +165,7 @@ const Dashboard = () => {
               <table>
                 <thead>
                   <tr className="tb_left">
+                  <th><a>ID</a></th>
                     <th><a>Username</a></th>
                     <th><a>Total Spending</a></th>
                   </tr>
@@ -172,7 +173,8 @@ const Dashboard = () => {
                 <tbody>
                 {topCustomer.map((idx) => (
                     <tr id={idx._id}>
-                        <td>{idx.firstName}</td>
+                       <td>#...{idx._id.slice(19,24)} </td>
+                         <td>{idx.firstName} {idx.lastName}</td>
                         {/* <td>{idx.total_orders}</td> */}
                         <td style={{paddingLeft: "40px"}}>{idx.total_spending}</td>
                       </tr>
@@ -211,8 +213,8 @@ const Dashboard = () => {
                     <tbody>      
                       {latestorders.map((idx)=>(
                         <tr id={idx._id}>
-                          <td>{idx._id.slice(10,15)}</td>
-                          <td>{idx.customerName}</td>
+                          <td>#...{idx._id.slice(19,24)}</td>
+                          <td>{idx.customerId.firstName} {idx.customerId.lastName}</td>
                           <td>{idx.payableAmount}</td>
                           <td>{idx.createdAt.slice(0,10)}</td>
                           <td className="status">
