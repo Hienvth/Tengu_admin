@@ -15,7 +15,10 @@ table {
     overflow: hidden;
 }
 thead{
+    border-bottom:1px solid blue ;
+    border-right: 2px solid  blue;
     box-shadow: 0 5px 10px #EEEEEE;
+    padding: 2px;
 }
 th{
     padding: 1rem 2rem;

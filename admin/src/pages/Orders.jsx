@@ -115,19 +115,7 @@ const Orders = () => {
                 }),
               
             }}
-            // actions={[
-            //   {
-            //     icon: () => <DeleteIcon />,
-            //     tooltip: "Delete",
-            //     onClick: (e, data) => new Promise((resolve, reject) => {
-
-            //     })
-            //   } ,
-
-            // isFreeAction:true
-
-            //        ]}
-
+           
             actions={[
               {icon: () => <Controls.Button
                               variant ="outlined"
