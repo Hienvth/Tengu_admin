@@ -3,40 +3,43 @@ import MaterialTable from "material-table";
 
 import AddIcon from "@material-ui/icons/Add";
 import axios from "axios";
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
-import Views from '../components/register/View'
+import Views from "../components/register/View";
 import Controls from "../components/control/Controls";
 import LayoutSample from "../components/Invoice/Invoice";
 
-
 const Orders = () => {
-  const [tableData, setTableData] = useState([
-    
-  ]);
-  // button 
-  const [openFormR, setOpenFormR] = useState(false);
-
-
-  const [orders, setOrders] = useState([]);
   const getOrdersUrl = "https://tengu-nodejs.herokuapp.com/api/order/";
   const token = localStorage.getItem("accessToken").toString();
+
+  const [detailOrder, setDetaiOrder] = useState({});
+  console.log(detailOrder)
+
+  const [openFormR, setOpenFormR] = useState(false);
+
+  const [orders, setOrders] = useState([]);
   useEffect(() => {
     axios.get(getOrdersUrl, { headers: { token: token } }).then((response) => {
       setOrders(response.data);
     });
   }, []);
-  console.log(orders);
+
   const columns = [
     // {title:"Order ID", field:"orderId"},
-    { title: "Customer Name", 
+    {
+      title: "Customer Name",
 
       render: (orders) => {
         return `${orders.customerId.firstName} ${orders.customerId.lastName}`;
       },
-       field: "orders", sorting: false },
+      field: "orders",
+      sorting: false,
+    },
     {
-      title: "Receiver", field: "customerName", sorting: false
+      title: "Receiver",
+      field: "customerName",
+      sorting: false,
     },
     {
       title: "Total Price",
@@ -46,7 +49,7 @@ const Orders = () => {
       currencySetting: { currencyCode: "VND", minimumFractionDigits: 0 },
       editing: false,
     },
-    
+
     {
       title: "Order Date",
       field: "createdAt",
@@ -61,12 +64,15 @@ const Orders = () => {
       filtering: false,
       sorting: false,
     },
-    { title: "address", 
+    {
+      title: "address",
 
       render: (orders) => {
         return `${orders.address.ward} , ${orders.address.district}, ${orders.address.province} `;
       },
-       field: "orders", sorting: false },
+      field: "orders",
+      sorting: false,
+    },
     {
       title: "Status",
       field: "status",
@@ -100,28 +106,39 @@ const Orders = () => {
             columns={columns}
             data={orders}
             editable={{
-              
               onRowUpdate: (newRow, oldRow) =>
                 new Promise((resolve, reject) => {
                   // const updatedData = [...tableData];
                   // updatedData[oldRow.tableData.id] = newRow;
                   // setTableData(updatedData);
                   // setTimeout(() => resolve(), 500);
-                  const updateOrderUrl = "https://tengu-nodejs.herokuapp.com/api/order/" + oldRow._id;
-                  axios.put(updateOrderUrl,{
-                    status: "success"
-                  }, {headers: {token: token}}).then(() => {setTimeout(() => resolve(), 500);})
-                  
+                  const updateOrderUrl =
+                    "https://tengu-nodejs.herokuapp.com/api/order/" +
+                    oldRow._id;
+                  axios
+                    .put(
+                      updateOrderUrl,
+                      {
+                        status: "success",
+                      },
+                      { headers: { token: token } }
+                    )
+                    .then(() => {
+                      setTimeout(() => resolve(), 500);
+                    });
                 }),
-              
             }}
-           
             actions={[
-              {icon: () => <Controls.Button
-                              variant ="outlined"
-                              startIcon={< VisibilityIcon/>}
-                              onClick= {() => setOpenFormR(true)}             
-                          />}
+              {
+                icon: () => (
+                  <Controls.Button
+                    variant="outlined"
+                    startIcon={<VisibilityIcon />}
+                    onClick={() => setOpenFormR(true)}
+                  />
+                ),
+                onClick: (e, data) => {setDetaiOrder(data)},
+              },
             ]}
             onSelectionChange={(selectedRows) => console.log(selectedRows)}
             options={{
@@ -155,18 +172,14 @@ const Orders = () => {
               columnsButton: true,
               rowStyle: (data, index) =>
                 index % 2 === 0 ? { background: "#f5f5f5" } : null,
-                headerStyle: { background: "#33B0FF ",color:"#fff"}
+              headerStyle: { background: "#33B0FF ", color: "#fff" },
             }}
             title="Orders"
             icons={{ Add: () => <AddIcon /> }}
           />
 
-          <Views
-            openFormR={openFormR}
-            setOpenFormR={setOpenFormR}
-            >
-              <LayoutSample/>
-
+          <Views openFormR={openFormR} setOpenFormR={setOpenFormR}>
+            <LayoutSample detailOrder={detailOrder} />
           </Views>
         </div>
       </div>

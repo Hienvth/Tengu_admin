@@ -6,7 +6,7 @@
     background-color: #fff;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,.3);
     box-sizing: border-box;
-  
+    
     /*
           Use the DejaVu Sans font for display and embedding in the PDF file.
           The standard PDF fonts have no support for Unicode characters.
@@ -20,10 +20,10 @@
       The official site of the Deja Vu Fonts project is
       https://dejavu-fonts.github.io/.
   */
-  /* @font-face {
+  @font-face {
     font-family: "DejaVu Sans";
     src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans.ttf") format("truetype");
-  }
+  } 
   
   @font-face {
     font-family: "DejaVu Sans";
@@ -43,7 +43,7 @@
     font-style: italic;
     src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf") format("truetype");
   }
-   */
+  
   .pdf-header {
     padding-bottom: .2in;
     margin-bottom: .3in;
@@ -135,3 +135,16 @@
     background-color: rgba(20, 53, 80, 0.038);
     border: 1px solid rgba(20, 53, 80, 0.05);
   }
+
+
+.tbl1{
+  border-radius: 5px solid black;
+}
+.head1{
+  border-bottom: 2px solid black;
+}
+.th2{
+
+  border: 1px solid black;
+  
+}

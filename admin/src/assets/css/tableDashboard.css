@@ -6,21 +6,21 @@
     font-family: sans-serif;
 }
 
-table {
-    width: 100%;
+.tb1 {
+    width: 50px;
     border-collapse:  collapse;
     box-shadow: 0 5px 10px #EEEEEE;
     background-color: white;
     text-align: left;
     overflow: hidden;
 }
-thead{
+.the1{
     border-bottom:1px solid blue ;
     border-right: 2px solid  blue;
     box-shadow: 0 5px 10px #EEEEEE;
     padding: 2px;
 }
-th{
+.th1{
     padding: 1rem 2rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;

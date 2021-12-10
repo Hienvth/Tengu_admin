@@ -1,7 +1,10 @@
 import '../Invoice/Invoice.css';
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 // import { DropDownList } from '@progress/kendo-react-dropdowns';
-//
+import * as ReactDOM from "react-dom";
+import * as React from 'react'
+
+
 import logo from '../../assets/images/tengu.PNG'
 
 import { useRef, useState, useEffect } from 'react';
@@ -14,10 +17,13 @@ import Footer from './footer';
 import { Grid } from '@material-ui/core';
 
 
-function LayoutSample() {
-	const pdfExportComponent = useRef(null);
+const LayoutSample = ({detailOrder}) => {
+
+	// const pdfExportComponent = useRef(null);
+	
 	const [layoutSelection, setLayoutSelection] = useState({ text: "A4", value: "size-a4"});
 	
+	console.log(detailOrder)
 	// const ddData = [{ text: "A4", value: "size-a4" },
 	//                 { text: "Letter", value: "size-letter" },
 	// 								{ text: "Executive", value: "size-executive" }
@@ -30,6 +36,7 @@ function LayoutSample() {
 	const updatePageLayout = (event) => {
 		setLayoutSelection(event.target.value);
 	}
+	const pdfExportComponent = React.useRef(null);
 
   return(
     <div id="example">
@@ -61,7 +68,7 @@ function LayoutSample() {
 				paperSize="A4"
 				margin="2cm"
 				ref={pdfExportComponent}>
-					<div className={ `pdf-page ${ layoutSelection.value }` }>
+					<div className={ `pdf-page ` }>
 						<div className="inner-page">
 							<div className="pdf-header">
 								<span className="company-logo">
@@ -76,34 +83,48 @@ function LayoutSample() {
 								
 								// thêm cái id đơn hàng chỗ này nha 
 								
-								className="invoice-number">Invoice </span> 
+								className="invoice-number">Mã đơn hàng: {detailOrder._id}</span> 
 							</div>
 							<br/>
 							<br/>
 							<div className="pdf-footer">
-								<Footer/>					
+												
 							</div>
 							<div className="addresses">
 								<div className="for">
-									<h3>Invoice For</h3>
+									<h3>Người đặt</h3>
 									<Grid>
+										<p>
+										{detailOrder.customerId.lastName} <a> </a>
+										{detailOrder.customerId.firstName}
 										{/* tên người mua */}
+										</p>
+										<p>
+										{detailOrder.createdAt}
 										{/* ngày mua */}
-										
+										</p>
 
 									</Grid>
 								</div>
 
 								<div className="from">
-									<h3>From</h3>
-									<Grid>
-
+									<h3>Người nhận</h3>
+									<p>
+									{detailOrder.customerName}
+									</p>
 										{/* tên người nhận */}
+									<p>
+									{detailOrder.address.ward}
+									</p>
+									{detailOrder.address.district}
+									<p>
+									{detailOrder.address.province}
+									</p>
 										{/* địa chỉ */}
 										{/* số điện thoại liên lạc */}
-
-
-									</Grid>
+									<p>
+									sdt: {detailOrder.phone}
+									</p>
 																	
 									
 								</div>
@@ -111,39 +132,60 @@ function LayoutSample() {
 							<br/>
 							<br/>
 							<div>
-								<table>
-									<thead>
+								<table className="tbl1" style={{maxWidth:" 90%"}}>
+									<thead className='head1'>
 										<tr>
-											<th>STT</th>
-											<th>Tên Tranh</th>
-											<th>Giá bán</th>
-											<th>Khuyến mãi</th>
-											<th>Thành tiền</th>
-											
+											<th className="th2">STT</th>
+											<th className="th2">Tên Tranh</th>
+											<th className="th2">Giá bán</th>
+											<th className="th2">Số lượng</th>
+											<th className="th2">Thành tiền</th>
 										</tr>
 									</thead>
 									<tbody>
-
-
+										{detailOrder.products.map((product, idx) =>{
+											return (
+												<tr key={idx}>
+												<th className="th2">{idx + 1}</th>
+												<th className="th2">{product.productId.title}</th>
+												<th className="th2">{product.productId.price}</th>
+												<th className="th2">{product.quantity}</th>
+												<th className="th2">{product.quantity * product.productId.price}</th>
+											</tr>
+											);
+										})}
 									</tbody>
 								</table>
+								
+								<p className="signature">
+									Tổng tiền: {detailOrder.payableAmount > 800000 ? detailOrder.payableAmount : detailOrder.payableAmount + 30000} <br />
+									Phí vận chuyển: {detailOrder.payableAmount > 800000 ? "FREE" : "30 000đ"}<br/>
+									_______________<br/>
+									Thành giá: {detailOrder.payableAmount}
+								
+								</p>
+								<br/>
+								<br/>
+								<br/>
+								<br/> 
+								<Footer/>	
+								<br/>
+								<br/>
 							</div>
 							<div className="pdf-body">
 								<div id="grid"></div>
-								<p className="signature">
-									Tổng tiền: ___ <br />
-									Phí vận chuyển:___ <br/>
-									_______________<br/>
-									Thành giá:__
 								
-								</p>
 							</div>
+
 						</div>
 					</div>
 				</PDFExport>
 			</div>
 		</div>
   );
+  
+ReactDOM.render(< LayoutSample/>, document.querySelector("my-app"));
 }
+
 
 export default LayoutSample;

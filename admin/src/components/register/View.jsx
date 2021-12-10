@@ -20,11 +20,11 @@ export default function Views(props) {
     const classes = useStyles();
     return (
         
-        <Dialog open={openFormR} maxWidth="lg" >
+        <Dialog open={openFormR} maxWidth="md" >
             <DialogTitle className={classes.dialogTitle}>
                 <div style={{display:'flex'}}>
                     <Typography variant="h4" component="div" style={{flexGrow :1}}>
-                         <div>Create New Product</div>
+                         <div>Invoice</div>
                 
                     </Typography>
                     

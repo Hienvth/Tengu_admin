@@ -8,9 +8,11 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import EmployeeForm from './formProduct'; 
 
-import AddIcon from '@mui/icons-material/Add';
+// import AddIcon from '@mui/icons-material/Add';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import Views from '../Invoice/Invoice'
 
-export default function FormDialog() {
+export default function ViewsInvoice() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -21,10 +23,11 @@ export default function FormDialog() {
     setOpen(false);
   };
 
+
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        <AddIcon/>
+        <VisibilityIcon/>
         Create new
       </Button>
       <Dialog open={open} onClose={handleClose} maxWidth="md">

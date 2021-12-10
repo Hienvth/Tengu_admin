@@ -162,12 +162,12 @@ const Dashboard = () => {
                 // bodyData={topCustomers.body}
                 // renderBody={(item, index) => renderCustomerBody(item, index)}
               /> */}
-              <table>
-                <thead>
+              <table className="tb1">
+                <thead className="the1">
                   <tr className="tb_left">
-                  <th><a>ID</a></th>
-                    <th><a>Username</a></th>
-                    <th><a>Total Spending</a></th>
+                  <th className="th1"><a>ID</a></th>
+                    <thc lassName="th1"><a>Username</a></thc>
+                    <th className="th1"><a>Total Spending</a></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -200,14 +200,14 @@ const Dashboard = () => {
             <div className="card__body1">
                   
 
-                  <table>
-                    <thead>
+                  <table className="tb1">
+                    <thead className="the1">
                       <tr>
-                        <th>ID</th>
-                        <th> Username</th>
-                        <th >Total price</th>
-                        <th>Date</th>
-                        <th >Statusb</th>
+                        <th className="th1">ID</th>
+                        <th className="th1"> Username</th>
+                        <th className="th1">Total price</th>
+                        <th className="th1">Date</th>
+                        <th className="th1">Statusb</th>
                       </tr>
                     </thead>
                     <tbody>      
