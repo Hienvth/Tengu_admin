@@ -103,7 +103,7 @@ export default function Login() {
   //const btnStyle={margin:'8px 0'}
 
   return (
-    <Grid>
+    <Grid className="container">
       <Paper elevation={10} className="paperStyle">
         <Grid align="center">
           <Avatar style={avatarStyle}>
@@ -122,7 +122,7 @@ export default function Login() {
           fullWidth
           required
         />
-
+        <br/>
         <br />
         <TextField
           label="Password"
@@ -133,12 +133,12 @@ export default function Login() {
           fullWidth
           required
         />
-        <br />
+        {/* <br />
         <FormControlLabel
           control={<Checkbox name="CheckdB" color="primary" />}
           label="Remember me"
         />
-        <br />
+        <br /> */}
 
         <Button
           type="submit"
@@ -150,14 +150,14 @@ export default function Login() {
         >
           Sign in
         </Button>
-        <Typography>
+        {/* <Typography>
           <Link href="#">Forgot password</Link>
         </Typography>
 
         <Typography>
           {" "}
           Do you have an account ?<Link href="#">Sign Up</Link>
-        </Typography>
+        </Typography> */}
       </Paper>
     </Grid>
   );

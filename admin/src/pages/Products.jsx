@@ -5,14 +5,16 @@ import FormDialog from "../components/register/register";
 
 
 import FormRegister from "../components/register/formRegister";
-
+import Controls from "../components/control/Controls";
+import EmployeeForm from "../components/register/formProduct";
 import DeleteR from "../components/register/delete";
 import axios from "axios";
 
+import AddIcon from '@mui/icons-material/Add';
 const Products = () => {
   const getProductUrl = "https://tengu-nodejs.herokuapp.com/api/product/";
   const token = localStorage.getItem("accessToken");
-
+  const [openFormR, setOpenFormR] = useState(false)
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -67,7 +69,16 @@ const Products = () => {
     <div className="col-12">
       <div className="card">
         <div className="func">
-          <FormDialog />
+          {/* <FormDialog /> */}
+
+          <Controls.Button
+              text="New Product"
+              variant ="outlined"
+              startIcon={<AddIcon/>}
+              onClick = {() => setOpenFormR(true)}
+          />
+
+
         </div>
         <div className="card__body">
           <MaterialTable
@@ -168,6 +179,13 @@ const Products = () => {
             }}
             title="Product"
           />
+
+          <FormRegister
+            openFormR={openFormR}
+            setOpenFormR={setOpenFormR}
+            >
+              <EmployeeForm/>
+          </FormRegister>
         </div>
       </div>
     </div>

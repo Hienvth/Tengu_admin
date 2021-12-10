@@ -86,8 +86,8 @@ export default function EmployeeForm() {
 }
   return (
     <Form>
-      <Grid>
-        <Grid item xs={6}>
+      <Grid  container spacing={3}>
+        <Grid item xs={12} md={12} >
           {/* <TextField
                         variant= "outlined"
                         label="Photo"
@@ -102,7 +102,10 @@ export default function EmployeeForm() {
             value={values.title}
             onChange={handleChange}
           />
-          <div style={{ margin: "theme.spacing(0.5)" }}>
+          </Grid>
+          
+          {/* <div style={{ margin: "theme.spacing(0.5)" }}> */}
+          <Grid item xs={12} md={12} >
             <Controls.Input
               variant="outlined"
               label="Price"
@@ -113,6 +116,9 @@ export default function EmployeeForm() {
               onChange={handleChange}
               variant="outlined"
             />
+            </Grid>
+           
+            <Grid item xs={12} md={12} >
             <Controls.Input
               name="amount"
               label="Quality"
@@ -122,7 +128,9 @@ export default function EmployeeForm() {
               onChange={handleChange}
               variant="outlined"
             />
-          </div>
+            </Grid>
+          {/* </div> */}
+          <Grid item xs={12} md={12} >
           <Controls.Input
             name="size"
             label="Size"
@@ -130,6 +138,8 @@ export default function EmployeeForm() {
             value={values.size}
             onChange={handleChange}
           />
+          </Grid>
+          <Grid item xs={12} md={12} >
           <Controls.Input
             label="Photo"
             name="img"
@@ -141,13 +151,14 @@ export default function EmployeeForm() {
             variant="outlined"
           />
         </Grid>
-        <Grid item xs={6} sx={{ m: 1, minWidth: 120 }}>
+        <Grid item xs={12} md={12}>
           <Controls.Input
             name="discount_rate"
             label="Discount"
             value={values.discount_rate}
             onChange={handleChange}
           />
+          </Grid>
           {/* <Controls.DateC
                         name="createAt"
                         label="CreateAt"
@@ -155,13 +166,20 @@ export default function EmployeeForm() {
                         onChange={handleChange}
 
                     /> */}
+          <Grid item xs={12} md={12} >
           <Controls.Select
+            
             name="category"
             label="Category"
+            InputLabelProps={{
+              shrink: true,
+            }}
             value={values.category}
             onChange={handleChange}
             options={employeeService.getDepartmentCollection()}
           />
+          </Grid>
+          <Grid item xs={12} md={12} >
           <Controls.Input
             name="desc"
             label="Description"
@@ -174,20 +192,21 @@ export default function EmployeeForm() {
             InputLabelProps={{
               shrink: true,
             }}
+
             // error={errors.Description}
             variant="outlined"
           />
-
+          </Grid>
           <div>
             <Controls.Button
               // type="submit"
               text="Submit"
               onClick={createProduct}
             />
-            <Controls.Button text="Cancel" color="default" />
+           
           </div>
         </Grid>
-      </Grid>
+     
     </Form>
   );
 }

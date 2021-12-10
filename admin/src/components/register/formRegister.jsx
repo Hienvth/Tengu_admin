@@ -20,7 +20,7 @@ export default function FormRegister(props) {
     const classes = useStyles();
     return (
         
-        <Dialog open={openFormR} maxWidth="md" >
+        <Dialog open={openFormR} maxWidth="sm" >
             <DialogTitle className={classes.dialogTitle}>
                 <div style={{display:'flex'}}>
                     <Typography variant="h4" component="div" style={{flexGrow :1}}>

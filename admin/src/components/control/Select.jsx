@@ -7,6 +7,7 @@ export default function Select(props) {
     
     return (
         <FormControl
+        style={{minWidth: "100%"}}
             variant="outlined">
                 <InputLabel>{label}</InputLabel>
                 <MuiSelect 
