@@ -7,7 +7,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export default function DeleteR() {
+import VisibilityIcon from '@mui/icons-material/Visibility';
+export default function View() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -21,7 +22,7 @@ export default function DeleteR() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        <DeleteIcon fontSize="small"/>
+        <VisibilityIcon fontSize="small"/>
       </Button>
       <Dialog
         open={open}

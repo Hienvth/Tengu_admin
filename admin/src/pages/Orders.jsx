@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from "react";
 import MaterialTable from "material-table";
-import DeleteIcon from "@material-ui/icons/Delete";
+
 import AddIcon from "@material-ui/icons/Add";
 import axios from "axios";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+
+import Views from '../components/register/View'
+import Controls from "../components/control/Controls";
+import LayoutSample from "../components/Invoice/Invoice";
+
 
 const Orders = () => {
   const [tableData, setTableData] = useState([
     
   ]);
+  // button 
+  const [openFormR, setOpenFormR] = useState(false);
+
 
   const [orders, setOrders] = useState([]);
   const getOrdersUrl = "https://tengu-nodejs.herokuapp.com/api/order/";
@@ -39,7 +48,7 @@ const Orders = () => {
     },
     
     {
-      title: "Date",
+      title: "Order Date",
       field: "createdAt",
       type: "date",
       filtering: false,
@@ -104,13 +113,7 @@ const Orders = () => {
                   }, {headers: {token: token}}).then(() => {setTimeout(() => resolve(), 500);})
                   
                 }),
-              onRowDelete: (selectedRow) =>
-                new Promise((resolve, reject) => {
-                  const updatedData = [...tableData];
-                  updatedData.splice(selectedRow.tableData.id, 1);
-                  setTableData(updatedData);
-                  setTimeout(() => resolve(), 1000);
-                }),
+              
             }}
             // actions={[
             //   {
@@ -124,6 +127,14 @@ const Orders = () => {
             // isFreeAction:true
 
             //        ]}
+
+            actions={[
+              {icon: () => <Controls.Button
+                              variant ="outlined"
+                              startIcon={< VisibilityIcon/>}
+                              onClick= {() => setOpenFormR(true)}             
+                          />}
+            ]}
             onSelectionChange={(selectedRows) => console.log(selectedRows)}
             options={{
               sorting: true,
@@ -161,6 +172,14 @@ const Orders = () => {
             title="Orders"
             icons={{ Add: () => <AddIcon /> }}
           />
+
+          <Views
+            openFormR={openFormR}
+            setOpenFormR={setOpenFormR}
+            >
+              <LayoutSample/>
+
+          </Views>
         </div>
       </div>
     </div>

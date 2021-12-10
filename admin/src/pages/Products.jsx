@@ -7,7 +7,7 @@ import FormDialog from "../components/register/register";
 import FormRegister from "../components/register/formRegister";
 import Controls from "../components/control/Controls";
 import EmployeeForm from "../components/register/formProduct";
-import DeleteR from "../components/register/delete";
+
 import axios from "axios";
 
 import AddIcon from '@mui/icons-material/Add';
