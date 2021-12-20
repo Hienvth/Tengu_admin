@@ -104,7 +104,7 @@ const Dashboard = () => {
     <div>
       <h2 className="page-header">Dashboard</h2>
       <div className="row">
-        <div className="col-6">
+        <div className="col-12">
           <div className="row">
               <div className="col-6" id="1">
                 <StatusCard
@@ -129,9 +129,9 @@ const Dashboard = () => {
               </div>
         </div>
         </div>
-        <div className="col-6">
+        {/* <div className="col-6">
           <div className="card full-height">
-            {/* chart */}
+            
             <Chart
               options={
                 themeReducer === "theme-mode-dark"
@@ -149,7 +149,7 @@ const Dashboard = () => {
               height="100%"
             />
           </div>
-        </div>
+        </div> */}
         <div className="col-5">
           <div className="card">
             <div className="card__header">

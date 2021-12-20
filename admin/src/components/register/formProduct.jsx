@@ -118,17 +118,7 @@ export default function EmployeeForm() {
             />
             </Grid>
            
-            <Grid item xs={12} md={12} >
-            <Controls.Input
-              name="amount"
-              label="Quality"
-              type="numeric"
-            //   error={errors.price}
-              value={values.amount}
-              onChange={handleChange}
-              variant="outlined"
-            />
-            </Grid>
+           
           {/* </div> */}
           <Grid item xs={12} md={12} >
           <Controls.Input
@@ -158,7 +148,19 @@ export default function EmployeeForm() {
             value={values.discount_rate}
             onChange={handleChange}
           />
+          
           </Grid>
+          <Grid item xs={12} md={12} >
+            <Controls.Input
+              name="amount"
+              label="Quality"
+              type="numeric"
+            //   error={errors.price}
+              value={values.amount}
+              onChange={handleChange}
+              variant="outlined"
+            />
+            </Grid>
           {/* <Controls.DateC
                         name="createAt"
                         label="CreateAt"

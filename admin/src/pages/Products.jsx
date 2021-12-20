@@ -48,9 +48,9 @@ const Products = () => {
     },
     { title: "Size", field: "size" },
     //{title:"ActualPrice", field:"actualPrice",align: "left", type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false},
-    { title: "Quanlity", field: "amount", type: "numeric", align: "center" },
-
-    {
+    // { title: "Quanlity", field: "amount", type: "numeric", align: "center" },
+    {title: "Category", field: "category.category"},
+      {
       title: "Photo",
       field: "img",
       grouping: false,
@@ -58,6 +58,7 @@ const Products = () => {
         <img src={item.img} alt="" border="3" height="80" width="60px" />
       ),
       filtering: false,
+      sorting: false,
     },
 
     { title: "Description", field: "desc", weight: "100" },
@@ -85,11 +86,11 @@ const Products = () => {
             columns={columns}
             data={products}
             editable={{
-              onRowAdd: (newRow) =>
-                new Promise((resolve, reject) => {
-                  // setTableData([...tableData, newRow]);
-                  // setTimeout(() => resolve(), 500);
-                }),
+              // onRowAdd: (newRow) =>
+              //   new Promise((resolve, reject) => {
+              //     // setTableData([...tableData, newRow]);
+              //     // setTimeout(() => resolve(), 500);
+              //   }),
               onRowUpdate: (newRow, oldRow) =>
                 new Promise((resolve, reject) => {
                   // const updatedData = [...tableData];

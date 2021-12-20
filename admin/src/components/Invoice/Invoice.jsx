@@ -9,7 +9,19 @@ import logo from '../../assets/images/tengu.PNG'
 
 import { useRef, useState, useEffect } from 'react';
 import Controls from '../control/Controls';
-
+import {
+	InputLabel,
+	MenuItem,
+	Paper,
+	Select,
+	Table,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableHead,
+	TableRow,
+	Typography,
+  } from "@mui/material";
 
 import PageTemplate from './pagetemplate'
 
@@ -132,31 +144,54 @@ const LayoutSample = ({detailOrder}) => {
 							<br/>
 							<br/>
 							<div>
-								<table className="tbl1" style={{maxWidth:" 90%"}}>
-									<thead className='head1'>
-										<tr>
-											<th className="th2">STT</th>
-											<th className="th2">Tên Tranh</th>
-											<th className="th2">Giá bán</th>
-											<th className="th2">Số lượng</th>
-											<th className="th2">Thành tiền</th>
-										</tr>
-									</thead>
-									<tbody>
-										{detailOrder.products.map((product, idx) =>{
-											return (
-												<tr key={idx}>
-												<th className="th2">{idx + 1}</th>
-												<th className="th2">{product.productId.title}</th>
-												<th className="th2">{product.productId.price}</th>
-												<th className="th2">{product.quantity}</th>
-												<th className="th2">{product.quantity * product.productId.price}</th>
-											</tr>
-											);
-										})}
-									</tbody>
-								</table>
 								
+			<TableContainer component={Paper}>
+                <Table sx={{ minWidth: "100%" }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+					  <TableCell width="10%">STT</TableCell>	
+                      <TableCell width="40%">Tên tranh</TableCell>
+                      <TableCell width="20%" align="right">
+                        Giá tiền
+                      </TableCell>
+                      <TableCell width="10%" align="right">
+                        Số lượng
+                      </TableCell>
+                      <TableCell width="20%" align="right">
+                        Tổng cộng
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+				  {detailOrder.products.map((product, idx) =>{
+					  return (
+                      <TableRow  key={idx}>
+						  <TableCell width="10%" align="right">
+						  {idx + 1}								
+						 </TableCell>
+                        <TableCell width="40%">
+						{product.productId.title}
+							
+							</TableCell>
+                        <TableCell width="20%" align="right">
+						{product.productId.price}
+                        </TableCell>
+                        <TableCell width="10%" align="right">
+                         
+							{product.quantity}		
+                        </TableCell>
+                        <TableCell width="20%" align="right">
+                          {/* {TotalPrice(item.price, item.quantity)} */}
+						  {product.quantity * product.productId.price}
+                        </TableCell>
+                      </TableRow>
+					  );
+                    })}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+
+
 								<p className="signature">
 									Tổng tiền: {detailOrder.payableAmount > 800000 ? detailOrder.payableAmount : detailOrder.payableAmount + 30000} <br />
 									Phí vận chuyển: {detailOrder.payableAmount > 800000 ? "FREE" : "30 000đ"}<br/>
@@ -184,7 +219,7 @@ const LayoutSample = ({detailOrder}) => {
 		</div>
   );
   
-ReactDOM.render(< LayoutSample/>, document.querySelector("my-app"));
+
 }
 
 

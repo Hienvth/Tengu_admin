@@ -1,13 +1,11 @@
 import React from 'react'
-
 import { Route, Switch } from 'react-router-dom'
-
 import Dashboard from '../pages/Dashboard'
 import Customers from '../pages/Customers'
 import Products from '../pages/Products'
 import Analytics from '../pages/Analytics'
 import Orders from '../pages/Orders'
-import Add from '../pages/Add'
+import Add from '../pages/TopCustomer'
 import Profile from '../pages/Profile'
 import Settings from '../pages/Settings'
 const Routes = () => {
@@ -20,7 +18,6 @@ const Routes = () => {
             <Route path='/admin/analytics' component={Analytics}/>
             <Route path='/admin/add' component={Add}/>
             <Route path='/admin/profile' component={Profile}/>
-        
             <Route path='/admin/settings' component={Settings}/>
         
         </Switch>

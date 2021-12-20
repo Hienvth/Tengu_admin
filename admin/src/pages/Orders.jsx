@@ -54,15 +54,15 @@ const Orders = () => {
       title: "Order Date",
       field: "createdAt",
       type: "date",
-      filtering: false,
-      sorting: false,
+      // filtering: false,
+      // sorting: false,
     },
     {
       title: "Updated Date",
       field: "updatedAt",
       type: "date",
       filtering: false,
-      sorting: false,
+      // sorting: false,
     },
     {
       title: "address",

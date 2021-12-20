@@ -31,6 +31,7 @@ const Customers = () => {
          {title:"Email", field:"email", sorting:false},
          {title:"Phone numbers", field:"phone", sorting:false},
          {title:"Total Orders", field:"total_orders", type:"numeric", align:"left", filtering: false},
+        //  {title:"Total Sales", field:"total_sales", type:"numeric", align:"left", filtering: false},
          {title:"Total Spend", field:"total_spending",align: "left", filtering:false,type:"currency", currencySetting:{currencyCode:"VND", minimumFractionDigits: 0}, editing:false},
          {title:"Location", field:"address"}   
             
